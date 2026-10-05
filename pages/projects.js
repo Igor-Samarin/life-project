@@ -1,13 +1,14 @@
+import Link from "next/link";
 import Layout from "../components/Layout";
 
 const projects = [
-  ["Shopify", "Магазины, товары, тесты, продажи и дальнейшее масштабирование.", "E-commerce"],
-  ["Taxi / Prague Tours", "Прямые клиенты, туристические поездки, визитки, QR и бронирования.", "Текущий доход"],
-  ["Trading Bots", "Торговые боты и автоматизированные стратегии как отдельное направление.", "Финтех"],
-  ["Family Clothing Brand", "Семейный бренд одежды, персональные цифровые аватары и капсулы.", "Бренд"],
-  ["Prague Casting & Content Studio", "Студия, кастинг, продакшн и агентская модель для совершеннолетних исполнителей.", "Studio"],
-  ["Dating App", "Приложение знакомств с реальными подарками, логистикой и игровыми механиками.", "App"],
-  ["Wedding Complex", "Концепт свадебного комплекса: кафе и магазины свадебных товаров.", "Real Estate"],
+  ["Shopify", "Магазины, товары, тесты, продажи и дальнейшее масштабирование.", "E-commerce", "/projects/shopify"],
+  ["Taxi / Prague Tours", "Прямые клиенты, туристические поездки, визитки, QR и бронирования.", "Текущий доход", null],
+  ["Trading Bots", "Торговые боты и автоматизированные стратегии как отдельное направление.", "Финтех", null],
+  ["Family Clothing Brand", "Семейный бренд одежды, персональные цифровые аватары и капсулы.", "Бренд", null],
+  ["Prague Casting & Content Studio", "Студия, кастинг, продакшн и агентская модель для совершеннолетних исполнителей.", "Studio", null],
+  ["Dating App", "Приложение знакомств с реальными подарками, логистикой и игровыми механиками.", "App", null],
+  ["Wedding Complex", "Концепт свадебного комплекса: кафе и магазины свадебных товаров.", "Real Estate", null],
 ];
 
 export default function Projects() {
@@ -25,14 +26,17 @@ export default function Projects() {
       </div>
 
       <section className="lp-grid">
-        {projects.map(([title,text,meta]) => (
-          <article className="lp-card" key={title}>
+        {projects.map(([title,text,meta,href]) => {
+          const inner = <>
             <div className="lp-cardLabel">{meta}</div>
             <h3>{title}</h3>
             <p>{text}</p>
-            <div className="lp-cardMeta">Открыть проект →</div>
-          </article>
-        ))}
+            <div className="lp-cardMeta">{href ? "Открыть проект →" : "Структура в работе"}</div>
+          </>;
+          return href
+            ? <Link href={href} className="lp-card" key={title}>{inner}</Link>
+            : <article className="lp-card" key={title}>{inner}</article>;
+        })}
       </section>
     </Layout>
   );
