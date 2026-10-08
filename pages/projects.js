@@ -67,7 +67,12 @@ const projectVisuals = {
   "Family Business Network": {mark:"◈", tone:"#dfbe78"},
   "Landscape Design · Prague / Czechia": {mark:"❧", tone:"#a8d1ac"}
 };
-const actionList = (project) => ownerActions[project.title] || (project.status === "planned" ? [] : []);
+const actionList = (project) => ownerActions[project.title] || [];
+const nextWork = (project, status) => {
+  if (status === "planned") return "В очереди: сохранить концепцию и критерии запуска. Исполнитель и срок пока не назначены.";
+  if (status === "prep") return "В подготовке: собрать требования, оценить бюджет и риски, составить план запуска. Исполнитель пока не назначен.";
+  return "В работе: уточнить ближайший результат, ответственного и срок; получить подтверждённый отчёт.";
+};
 
 const collaboration = {
   "Shopify": {
@@ -167,7 +172,7 @@ export default function Projects() {
         .prep .groupTitle,.prep .count{color:#91b8e4}
         .planned .groupTitle,.planned .count{color:#cf8794}
 
-        .projectGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .projectGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
         .projectCard{min-height:350px;padding:20px 21px;border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.18s ease}
         .active .projectCard{
           border:1px solid rgba(184,193,73,.34);
@@ -239,7 +244,7 @@ export default function Projects() {
         .detailDisclaimer{font-size:11px}
         @media(max-width:1000px){.projectGrid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:680px){
-          .projectGrid{grid-template-columns:1fr;gap:10px}
+          .projectGrid{grid-template-columns:1fr;gap:18px}
           .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
           :global(.projectArtwork){height:94px;margin:-14px -16px 12px}
           :global(.projectArtwork) span{font-size:65px}
@@ -327,9 +332,11 @@ export default function Projects() {
                 </div>
                 <p>{project.text}</p>
                 <div className="actionPreview">
-                  <strong>Твоё следующее решение</strong>
-                  <div className="mobileAction">{actionList(project)[0] || "Сейчас решений не требуется"}</div>
-                  <ol className="desktopActions">{actionList(project).slice(0,3).map(task => <li key={task}>{task}</li>)}</ol>
+                  <strong>{actionList(project).length ? "Твоё следующее действие" : "Следующая работа по проекту"}</strong>
+                  {actionList(project).length ? <>
+                    <div className="mobileAction">{actionList(project)[0]}</div>
+                    <ol className="desktopActions">{actionList(project).slice(0,3).map(task => <li key={task}>{task}</li>)}</ol>
+                  </> : <p>{nextWork(project, statuses[project.title])}<br/>От тебя решение сейчас не требуется.</p>}
                 </div>
                 <button className="detailsButton" type="button" onClick={() => setSelectedProject(project)}>Задачи и решения →</button>
                 <details className="workDetails">
