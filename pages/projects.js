@@ -187,9 +187,9 @@ export default function Projects() {
             radial-gradient(circle at 90% 10%,rgba(154,64,82,.14),transparent 34%),
             linear-gradient(145deg,#1a1115,#090c0d);
         }
-        .projectArtwork{height:190px;margin:-20px -21px 15px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(238,181,73,.35),transparent 48%),linear-gradient(135deg,#3a2e1b,#111820 80%);border-bottom:1px solid rgba(230,192,95,.2)}
-        .projectArtwork:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 25px,rgba(255,255,255,.025) 26px 27px)}
-        .projectArtwork span{font-size:78px;position:relative;filter:drop-shadow(0 15px 12px #0009)}
+        :global(.projectArtwork){height:190px;margin:-20px -21px 15px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(238,181,73,.35),transparent 48%),linear-gradient(135deg,#3a2e1b,#111820 80%);border-bottom:1px solid rgba(230,192,95,.2)}
+        :global(.projectArtwork):before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 25px,rgba(255,255,255,.025) 26px 27px)}
+        :global(.projectArtwork) span{font-size:78px;position:relative;filter:drop-shadow(0 15px 12px #0009)}
         .projectCard:hover{transform:translateY(-4px);box-shadow:0 16px 45px #000a}
         .active .projectCard:hover{border-color:rgba(199,209,89,.52)}
         .prep .projectCard:hover{border-color:rgba(100,151,209,.54)}
@@ -241,8 +241,8 @@ export default function Projects() {
         @media(max-width:680px){
           .projectGrid{grid-template-columns:1fr;gap:10px}
           .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
-          .projectArtwork{height:94px;margin:-14px -16px 12px}
-          .projectArtwork span{font-size:65px}
+          :global(.projectArtwork){height:94px;margin:-14px -16px 12px}
+          :global(.projectArtwork) span{font-size:65px}
           .titleRow{margin-top:9px}.projectCard h3{font-size:19px}
           .projectCard p{font-size:11px;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
           .projectIcon{width:62px;height:62px;flex-basis:62px;border-radius:17px!important}
@@ -315,7 +315,7 @@ export default function Projects() {
 
             {group.projects.map((project) => (
               <article className="projectCard" key={project.title}>
-                <ProjectArt kind={artForTitle(project.title)} className="projectArtwork" />
+                <ProjectArt kind={project.title} className="projectArtwork" />
                 <div className="metaLine">
                   <span className="meta">{project.meta}</span>
                   <span className="priority">{project.priority}</span>
