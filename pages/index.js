@@ -35,12 +35,12 @@ export default function Home() {
         </div>
       </section>
       <section className="lp-panel priorityPanel">
-        <div className="priorityHead"><div><div className="lp-eyebrow">Всегда перед глазами</div><h2 className="lp-sectionTitle">Приоритетные проекты</h2></div><Link href="/projects">Все проекты →</Link></div>
-        <p className="lp-subtitle">Семь направлений для быстрого перехода. Порядок — текущий ориентир, а не автоматически рассчитанный рейтинг.</p>
+        <div className="priorityHead"><div><div className="lp-eyebrow">Всегда перед глазами</div><h2 className="lp-sectionTitle">Приоритеты и участники</h2></div><Link href="/projects">Все проекты →</Link></div>
+        <p className="lp-subtitle">Быстрые переходы к своим направлениям и карточкам участников. Порядок — текущий ориентир, а не автоматически рассчитанный рейтинг.</p>
         <div className="priorityGrid">
           <Link href="/projects/shopify"><ProjectArt kind="Shopify" className="priorityArt"/><div><small>01 · Главный бизнес-фокус</small><strong>Shopify / LUMERA</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="Life Project" className="priorityArt"/><div><small>02 · Система управления</small><strong>LIFE PROJECT</strong></div></Link>
-          <Link href="/projects"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Проект Карины · без участия Игоря</small><strong>Karina · Prague Private Tours</strong></div></Link>
+          <Link href="/projects/team?person=karina"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Участник · отдельный проект</small><strong>Карина · Prague Tours</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="AI Product Monetization" className="priorityArt"/><div><small>04 · Личный AI</small><strong>Personal AI Companion</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="International Driver Platform · Europe & USA" className="priorityArt"/><div><small>05 · Подготовка</small><strong>Driver Platform</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="Trading Bots" className="priorityArt"/><div><small>06 · Исследование</small><strong>Trading Bots</strong></div></Link>
