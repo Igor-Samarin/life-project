@@ -20,7 +20,7 @@ export default function Home() {
           <div className="lp-eyebrow">LIFE PROJECT · ЛИЧНАЯ ЭКОСИСТЕМА</div>
           <h1>Добро пожаловать<br/><em>в твою империю.</em></h1>
           <p>Все важные направления жизни в одном месте. Управляй проектами, семьёй, финансами и будущими целями — в своём темпе.</p>
-          <div className="heroButtons"><Link href="/projects">Перейти к проектам →</Link><Link href="/garage">Мои цели ↗</Link></div>
+          <div className="heroButtons"><Link href="/projects">Перейти к проектам →</Link><Link href="/goals">Мои цели ↗</Link></div>
         </div>
       </section>
       <div className="homeBelow"><section className="lp-panel">
@@ -31,6 +31,19 @@ export default function Home() {
           <Link href="/family" className="lp-controlLink"><ProjectArt kind="Семья" className="controlArt"/><strong>Семья</strong><span>Семейные цели и события →</span></Link>
           <Link href="/finances" className="lp-controlLink"><ProjectArt kind="Финансы" className="controlArt"/><strong>Финансы</strong><span>Доходы, расходы и резерв →</span></Link>
           <Link href="/garage" className="lp-controlLink"><ProjectArt kind="Гараж семьи" className="controlArt"/><strong>Гараж семьи</strong><span>Автомобили и планы →</span></Link>
+        </div>
+      </section>
+      <section className="lp-panel priorityPanel">
+        <div className="priorityHead"><div><div className="lp-eyebrow">Всегда перед глазами</div><h2 className="lp-sectionTitle">Приоритетные проекты</h2></div><Link href="/projects">Все проекты →</Link></div>
+        <p className="lp-subtitle">Семь направлений для быстрого перехода. Порядок — текущий ориентир, а не автоматически рассчитанный рейтинг.</p>
+        <div className="priorityGrid">
+          <Link href="/projects/shopify"><ProjectArt kind="Shopify" className="priorityArt"/><div><small>01 · Главный бизнес-фокус</small><strong>Shopify / LUMERA</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Life Project" className="priorityArt"/><div><small>02 · Система управления</small><strong>LIFE PROJECT</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Текущий доход</small><strong>Taxi / Prague Tours</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="AI Product Monetization" className="priorityArt"/><div><small>04 · Личный AI</small><strong>Personal AI Companion</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="International Driver Platform · Europe & USA" className="priorityArt"/><div><small>05 · Подготовка</small><strong>Driver Platform</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Trading Bots" className="priorityArt"/><div><small>06 · Исследование</small><strong>Trading Bots</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Family Business Network" className="priorityArt"/><div><small>07 · Развитие</small><strong>Family Business Network</strong></div></Link>
         </div>
       </section>
       <section className="lp-panel">
@@ -49,6 +62,16 @@ export default function Home() {
       </section>
       </div>
       <style jsx>{`
+        .priorityHead{display:flex;align-items:center;justify-content:space-between;gap:15px}.priorityHead :global(a){font-size:12px;color:#ebcc80}
+        .priorityGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:23px}
+        .priorityGrid :global(a){overflow:hidden;display:flex;flex-direction:column;border:1px solid #bda16066;border-radius:15px;background:linear-gradient(135deg,#30271b,#111317);transition:.2s}
+        .priorityGrid :global(a:hover){transform:translateY(-3px);border-color:#e9c574}
+        .priorityGrid :global(.priorityArt){height:100px;min-height:100px}
+        .priorityGrid :global(a>div:last-child){padding:12px;display:flex;flex-direction:column;gap:6px}
+        .priorityGrid :global(small){font-size:10px;color:#baaa8b}
+        .priorityGrid :global(strong){font-size:13px;color:#f1d28c}
+        @media(max-width:850px){.priorityGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
         .welcomeHero{min-height:calc(100svh - 72px);position:relative;overflow:hidden;border:0;border-radius:0;background:#090b0d;display:flex;align-items:center;width:100%}
         .welcomeVisual{position:absolute;inset:0;opacity:.82}
         .welcomeVisual :global(.welcomeCar){height:100%;min-height:100%;background-position:center 60%!important}
