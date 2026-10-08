@@ -7,7 +7,7 @@ export default function PrivateVault() {
   const [notice, setNotice] = useState(false);
   const [turning, setTurning] = useState(false);
   const [inside, setInside] = useState(false);
-  useEffect(() => { if (!turning) return; const t=setTimeout(()=>setInside(true),2500); return ()=>clearTimeout(t); },[turning]);
+  useEffect(() => { if (!turning) return; const t=setTimeout(()=>setInside(true),5000); return ()=>clearTimeout(t); },[turning]);
   return <Layout>
     <section className="vault">
       <div className="eyebrow">LIFE PROJECT / PRIVATE AREA</div>
@@ -44,10 +44,10 @@ export default function PrivateVault() {
       .dialOuter{width:57%;aspect-ratio:1;border-radius:50%;border:9px solid #c6a45b;box-shadow:0 0 0 4px #393022,0 10px 28px #000b,inset 0 0 18px #0009;background:repeating-conic-gradient(from 0deg,#bd9b55 0 3deg,#292a2b 3deg 30deg);display:grid;place-items:center}
       .dialMiddle{width:76%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#e5c677,#6b542b 40%,#d7b36a);display:grid;place-items:center;border:3px solid #29251c}
       .dialInner{width:67%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#4e4b42,#141619 75%);border:2px solid #ebc877;display:grid;place-items:center;color:#f4d38a;font-size:44px}
-      .turning .dialOuter{transform:rotate(70deg)}
-      .dialOuter{transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
-      .turning .safeDoor{animation:vaultOpen 2.5s ease-in-out forwards;box-shadow:inset 0 0 30px #000a,0 0 22px #d9ac5680}
-      @keyframes vaultOpen{0%,36%{transform:rotateY(0deg)}100%{transform:rotateY(-78deg)}}
+      .turning .dialOuter{transform:rotate(450deg)}
+      .dialOuter{transition:transform 2.8s cubic-bezier(.2,.8,.2,1)}
+      .turning .safeDoor{animation:vaultOpen 5s ease-in-out forwards;box-shadow:inset 0 0 30px #000a,0 0 22px #d9ac5680}
+      @keyframes vaultOpen{0%,56%{transform:rotateY(0deg)}100%{transform:rotateY(-78deg)}}
       .safeDoor{transition:box-shadow 1s ease}
       .safePlate{position:absolute;bottom:17px;font-size:9px;letter-spacing:2px;color:#d5b56c}
       .locked{display:flex;justify-content:center;align-items:center;gap:8px;color:#d7bd7b;font-size:11px;letter-spacing:2px;margin:18px}
