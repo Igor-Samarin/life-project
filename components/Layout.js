@@ -27,11 +27,11 @@ export default function Layout({ children, active }) {
         .lp-status{font-size:12px;color:#b9b4a8;display:flex;gap:8px;align-items:center}
         .lp-dot{width:7px;height:7px;background:#c8ad55;border-radius:50%;box-shadow:0 0 12px #c8ad55}
         .lp-navWrap{border-bottom:1px solid rgba(212,175,55,.10);background:rgba(10,11,13,.68)}
-        .lp-nav{max-width:1320px;margin:0 auto;padding:12px 5vw;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-        .lp-navItem{min-height:52px;display:flex;align-items:center;gap:10px;padding:0 15px;border:1px solid rgba(217,187,91,.12);border-radius:14px;background:rgba(20,21,24,.56);color:#9e9a91;transition:.2s ease}
-        .lp-navItem:hover{border-color:rgba(217,187,91,.34);color:#f1ead8}
+        .lp-nav{max-width:1320px;margin:0 auto;padding:12px 5vw;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+        .lp-navItem{min-height:66px;display:flex;align-items:center;gap:13px;padding:0 19px;border:1px solid rgba(217,187,91,.24);border-radius:17px;background:linear-gradient(130deg,rgba(49,39,22,.70),rgba(15,17,20,.96));color:#e7ddc4;box-shadow:inset 0 1px 0 rgba(255,226,143,.09),0 8px 22px #0005;transition:.2s ease;font-weight:600}
+        .lp-navItem:hover{transform:translateY(-2px);border-color:rgba(241,208,111,.68);color:#fff4cf;box-shadow:0 12px 30px #0008}
         .lp-navItem.active{box-shadow:inset 0 0 25px rgba(212,175,55,.14),0 0 18px rgba(212,175,55,.08);color:#f4e8bd;border-color:rgba(217,187,91,.40);background:linear-gradient(145deg,rgba(49,43,28,.78),rgba(17,18,21,.88))}
-        .lp-navIcon{color:#d2b65c}
+        .lp-navIcon{color:#f3d57c;font-size:24px;width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(232,192,93,.25);border-radius:11px;background:linear-gradient(135deg,#3b311d,#191713)}
         .lp-main{max-width:1450px;margin:0 auto;padding:48px 5vw 80px}
         .lp-eyebrow{color:#c9ad54;text-transform:uppercase;letter-spacing:.22em;font-size:10px;margin-bottom:14px}
         .lp-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,5.8vw,78px);font-weight:400;line-height:.95;margin:0;letter-spacing:-.045em}
@@ -54,7 +54,7 @@ export default function Layout({ children, active }) {
         .lp-cardMeta{margin-top:auto;padding-top:20px;color:#bbb4a3;font-size:12px}
         .lp-panel{margin-top:34px;padding:24px;border:1px solid rgba(217,187,91,.13);border-radius:20px;background:rgba(15,16,18,.74)}
         .lp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-        .lp-kpi{padding:18px;border:1px solid rgba(217,187,91,.10);border-radius:15px;background:rgba(24,25,28,.62)}
+        .lp-kpi{cursor:default;padding:18px;border:1px solid rgba(217,187,91,.10);border-radius:15px;background:rgba(24,25,28,.62)}
         .lp-kpi span{display:block;color:#858178;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
         .lp-kpi strong{display:block;margin-top:10px;font-size:24px;font-family:Georgia,serif;font-weight:400}
         .lp-footer{max-width:1320px;margin:0 auto;padding:0 5vw 34px;color:#575750;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
@@ -62,7 +62,7 @@ export default function Layout({ children, active }) {
           .lp-topbar{height:62px;padding:0 20px}
           :global(.lp-visual){height:125px}
           .lp-nav{padding:10px 16px;grid-template-columns:repeat(2,1fr)}
-          .lp-navItem{min-height:48px;padding:0 12px;font-size:13px}
+          .lp-navItem{min-height:56px;padding:0 12px;font-size:13px}
           .lp-main{padding:36px 18px 58px}
           .lp-grid{grid-template-columns:1fr 1fr}
           .lp-kpis{grid-template-columns:repeat(2,1fr)}
@@ -71,7 +71,7 @@ export default function Layout({ children, active }) {
         @media(max-width:600px){.lp-grid{grid-template-columns:1fr}.lp-card{min-height:270px}:global(.lp-visual){height:150px}}
         @media(max-width:420px){
           .lp-nav{grid-template-columns:1fr 1fr;gap:8px}
-          .lp-navItem{font-size:12px}
+          .lp-navItem{font-size:12px;gap:7px}.lp-navIcon{width:29px;height:29px;font-size:18px}
           .lp-kpis{grid-template-columns:1fr 1fr}
         }
       `}</style>
