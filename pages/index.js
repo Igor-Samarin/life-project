@@ -13,7 +13,7 @@ const sections = [
 export default function Home() {
   const [cardStyle,setCardStyle]=useState("cinema");
   return (
-    <Layout>
+    <Layout home>
       <section className="welcomeHero">
         <div className="welcomeVisual"><ProjectArt kind="Lamborghini Urus" className="welcomeCar"/></div>
         <div className="welcomeContent">
@@ -23,20 +23,7 @@ export default function Home() {
           <div className="heroButtons"><Link href="/projects">Перейти к проектам →</Link><Link href="/garage">Мои цели ↗</Link></div>
         </div>
       </section>
-      <div className="sectionIntro"><div><div className="lp-eyebrow">Навигация</div><h2 className="lp-sectionTitle">Твои направления</h2></div><div className="styleSwitch"><span>Вид карточек</span><button type="button" className={cardStyle==="cinema"?"selected":""} onClick={()=>setCardStyle("cinema")}>Кино</button><button type="button" className={cardStyle==="compact"?"selected":""} onClick={()=>setCardStyle("compact")}>Компактно</button></div></div>
-
-      <section className={"lp-grid homeSections "+(cardStyle==="compact"?"compact":"cinema")}>
-        {sections.map((s) => (
-          <Link href={s.href} key={s.href} className="lp-card">
-            <ProjectArt kind={s.title} className="lp-visual" /><div className="lp-cardLabel">{s.tag}</div>
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
-            <div className="lp-cardMeta">Открыть раздел →</div>
-          </Link>
-        ))}
-      </section>
-
-      <section className="lp-panel">
+      <div className="homeBelow"><section className="lp-panel">
         <h2 className="lp-sectionTitle">Центр управления</h2>
         <p className="lp-subtitle">Быстрые переходы к действиям. Выбери направление — откроется соответствующий рабочий раздел.</p>
         <div className="lp-controlLinks">
@@ -56,18 +43,20 @@ export default function Home() {
           <Link href="/projects">▤ Очередь проектов <span>Открыть →</span></Link>
         </div>
       </section>
+      </div>
       <style jsx>{`
-        .welcomeHero{min-height:390px;position:relative;overflow:hidden;border:1px solid #c4a15c66;border-radius:26px;background:linear-gradient(105deg,#17150f,#090a0c);display:flex;align-items:center;box-shadow:0 24px 70px #0009}
-        .welcomeVisual{position:absolute;inset:0 0 0 35%;opacity:.75}
-        .welcomeVisual :global(.welcomeCar){height:100%;min-height:390px;background-position:center 60%!important}
+        .welcomeHero{min-height:calc(100svh - 72px);position:relative;overflow:hidden;border:0;border-radius:0;background:#090b0d;display:flex;align-items:center;width:100%}
+        .welcomeVisual{position:absolute;inset:0;opacity:.82}
+        .welcomeVisual :global(.welcomeCar){height:100%;min-height:100%;background-position:center 60%!important}
         .welcomeHero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0d10 0%,#0b0d10eb 34%,#0b0d1040 80%,#0b0d1033);pointer-events:none}
-        .welcomeContent{position:relative;z-index:1;padding:45px 5%;max-width:680px}
+        .welcomeContent{position:relative;z-index:1;padding:65px max(6vw,24px);max-width:850px}
         .welcomeContent h1{font:normal clamp(38px,5vw,68px)/1.08 Georgia,serif;letter-spacing:-.03em;margin:0}
         .welcomeContent em{font-style:normal;color:#e8c775}
         .welcomeContent p{max-width:450px;color:#c4b9a6;line-height:1.7;font-size:14px;margin:22px 0}
         .heroButtons{display:flex;flex-wrap:wrap;gap:12px}
         .heroButtons :global(a){padding:13px 19px;border:1px solid #d8b96b99;border-radius:11px;background:#312717dd;color:#f4dda4;font-size:13px}
         .heroButtons :global(a:hover){background:#544020}
+        .homeBelow{max-width:1450px;margin:0 auto;padding:15px 5vw 0}
         .sectionIntro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-top:42px}
         .styleSwitch{display:flex;align-items:center;gap:7px;color:#aaa397;font-size:11px}
         .styleSwitch button{border:1px solid #a48c5366;background:#161719;color:#b8aa86;padding:9px 12px;border-radius:10px;cursor:pointer}
@@ -75,7 +64,7 @@ export default function Home() {
         .homeSections.compact :global(.lp-card){min-height:175px;padding:18px}
         .homeSections.compact :global(.lp-visual){height:80px;margin:-18px -18px 12px}
         .homeSections.compact :global(.lp-card h3){font-size:21px;margin:8px 0}
-        @media(max-width:700px){.welcomeHero{min-height:360px}.welcomeVisual{inset:0;opacity:.4}.welcomeContent{padding:32px 24px}.sectionIntro{align-items:start;flex-direction:column}.styleSwitch{flex-wrap:wrap}}
+        @media(max-width:700px){.welcomeHero{min-height:calc(100svh - 62px)}.welcomeVisual{inset:0;opacity:.62}.welcomeContent{padding:32px 24px}.welcomeHero:after{background:linear-gradient(0deg,#090b0df0 0%,#090b0d88 65%,#090b0d44)}.homeBelow{padding:12px 18px 0}}
 
         .lp-controlLinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:25px}
         :global(.lp-controlLink){padding:18px;border:1px solid #a18a4e66;border-radius:15px;background:linear-gradient(140deg,#332a1a,#131519);display:flex;flex-direction:column;gap:12px;min-height:205px;overflow:hidden;transition:.2s}
