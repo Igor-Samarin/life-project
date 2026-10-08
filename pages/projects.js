@@ -211,6 +211,8 @@ export default function Projects() {
         .empty{grid-column:1/-1;padding:24px;border:1px dashed rgba(217,187,91,.15);border-radius:16px;color:#777d78;font-size:12px}
         .saveNote{margin-top:12px;color:#686d69;font-size:10px}
 
+        .projectIcon{width:76px;height:76px;flex:0 0 76px;border-radius:20px!important;background:radial-gradient(circle at 30% 20%,rgba(245,214,123,.25),rgba(65,54,25,.32))!important;box-shadow:inset 0 1px 0 rgba(255,235,170,.22),0 8px 24px rgba(0,0,0,.25)!important}
+        .projectIcon svg{width:52px;height:52px;filter:drop-shadow(0 2px 6px rgba(235,194,91,.25))}
         .mobileAction{display:none}
         .detailsButton{margin-top:12px;text-align:left;border:0;background:none;color:#ead797;font-size:12px;cursor:pointer;padding:5px 0}
         .detailBackdrop{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:15px}
@@ -227,7 +229,8 @@ export default function Projects() {
           .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
           .titleRow{margin-top:9px}.projectCard h3{font-size:19px}
           .projectCard p{font-size:11px;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-          .projectIcon{width:38px;height:38px;flex-basis:38px}
+          .projectIcon{width:62px;height:62px;flex-basis:62px;border-radius:17px!important}
+          .projectIcon svg{width:43px;height:43px}
           .actionPreview{padding:9px 11px;margin-top:9px}
           .actionPreview strong{font-size:10px}.desktopActions{display:none}.mobileAction{display:block;color:#d8d1bc;font-size:11px;margin-top:5px}
           .workDetails{display:none}.cardBottom{padding-top:9px}.statusArea{display:none}
@@ -302,7 +305,7 @@ export default function Projects() {
                 </div>
 
                 <div className="titleRow">
-                  <div className="projectIcon" aria-hidden="true"><svg viewBox="0 0 48 48" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">{project.title === "Відновимо" ? <><path d="M24 5v38M5 24h38"/><path d="M9 10l6 6M39 10l-6 6M9 38l6-6M39 38l-6-6"/></> : project.title === "Shopify" ? <><path d="M10 16h28l-3 25H13z"/><path d="M17 17v-5a7 7 0 0 1 14 0v5"/><path d="M20 27c2-3 8-3 9 0s-2 4-5 5-5 3-4 6"/></> : project.title === "Life Project" ? <><circle cx="24" cy="24" r="19"/><path d="M24 38V15m0 9-10-9m10 16 10-12M14 38h20"/></> : <><path d="M24 5 42 24 24 43 6 24Z"/><circle cx="24" cy="24" r="8"/><path d="M24 12v24M12 24h24"/></>}</svg></div>
+                  <div className="projectIcon" aria-hidden="true"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">{project.title === "Відновимо" ? <><path d="M24 5v38M5 24h38"/><path d="M9 10l6 6M39 10l-6 6M9 38l6-6M39 38l-6-6"/></> : project.title === "Shopify" ? <><path d="M10 16h28l-3 25H13z"/><path d="M17 17v-5a7 7 0 0 1 14 0v5"/><path d="M20 27c2-3 8-3 9 0s-2 4-5 5-5 3-4 6"/></> : project.title === "Life Project" ? <><circle cx="24" cy="24" r="19"/><path d="M24 38V15m0 9-10-9m10 16 10-12M14 38h20"/></> : <><path d="M24 5 42 24 24 43 6 24Z"/><circle cx="24" cy="24" r="8"/><path d="M24 12v24M12 24h24"/></>}</svg></div>
                   <h3>{project.title}</h3>
                 </div>
                 <p>{project.text}</p>
