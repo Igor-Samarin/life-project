@@ -14,7 +14,7 @@ const statusConfig = [
 const projectSeed = [
   { title: "Відновимо", icon: "✚", text: "Помощь после повреждения жилья: пошаговое обращение и подготовка материалов. Веб-прототип и код требуют синхронизации.", meta: "Социальный продукт", href: "https://vidnovymo.vercel.app", priority: "Проверка и доработка", status: "active" },
   { title: "Shopify", icon: "◇", text: "Главный e-commerce проект: подбор товаров, тесты, магазины, поставщики, аналитика и масштабирование.", meta: "E-commerce", href: "/projects/shopify", priority: "Приоритет №1", status: "active" },
-  { title: "Taxi / Private Driver / Prague Tours", icon: "➤", text: "Текущий доход: прямые клиенты, туристические маршруты по Праге, визитки, QR, бронирования и частные поездки.", meta: "Текущий доход", priority: "Работа сейчас", status: "active" },
+  { title: "Karina · Prague Private Tours", icon: "➤", text: "Самостоятельный проект Карины: частные поездки на Škoda Superb, трансферы аэропорт–отель, экскурсии по Праге и окрестностям, бронирования, сайт и работа с клиентами. Игорь не участвует в поездках, распределении заказов, графике или текущих расходах. Доли и возможное сотрудничество не согласованы.", meta: "Карина · самостоятельное направление", priority: "Подготовка Кариной · без задач Игорю", status: "prep" },
   { title: "Life Project", icon: "◎", text: "Единый личный кабинет: проекты, семья, финансы, гараж, планы, задачи, статусы и единый центр управления.", meta: "Система", priority: "Собираем в один кабинет", status: "active" },
 
   { title: "AI Template Studio", icon: "▧", text: "Отдельная студия цифровых продуктов: оригинальные шаблоны сайтов, лендингов, e-commerce тем, UI-компонентов и готовых наборов для бизнеса. AI помогает с дизайном, кодом, тестированием, документацией и демо; продажа лицензий через маркетплейсы и собственный магазин.", meta: "Digital Products / Templates", href: "/projects/ai-template-studio", priority: "Недалёкое будущее · без запуска", status: "planned" },
@@ -51,7 +51,7 @@ const ownerActions = {
   "Life Project": ["Проверить новый каталог проектов", "Выбрать три проекта для ближайшего фокуса", "Подтвердить правила уведомлений и согласований"]
 };
 const projectArtwork = {
-  "Відновимо":"🏠","Shopify":"🤖","Taxi / Private Driver / Prague Tours":"🚘","Life Project":"🌳",
+  "Відновимо":"🏠","Shopify":"🤖","Karina · Prague Private Tours":"🚘","Life Project":"🌳",
   "AI Template Studio":"🧩","International Driver Platform · Europe & USA":"✈️","Trading Bots":"🪙","YouTube World":"🎬",
   "Мир Насти · TikTok / YouTube":"🎤","Dating App":"💝","Crypto Shop / Digital Goods":"💎",
   "AI Product Monetization":"🤖","Family Business Network":"🏰","Landscape Design · Prague / Czechia":"🌿",
