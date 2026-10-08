@@ -167,30 +167,30 @@ export default function Projects() {
         .prep .groupTitle,.prep .count{color:#91b8e4}
         .planned .groupTitle,.planned .count{color:#cf8794}
 
-        .projectGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .projectCard{min-height:230px;padding:20px 21px;border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.18s ease}
+        .projectGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .projectCard{min-height:350px;padding:20px 21px;border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.18s ease}
         .active .projectCard{
           border:1px solid rgba(184,193,73,.34);
           background:
             radial-gradient(circle at 90% 10%,rgba(160,170,54,.12),transparent 34%),
-            linear-gradient(145deg,rgba(45,54,28,.92),rgba(18,22,17,.94));
+            linear-gradient(145deg,#131712,#090c0d);
         }
         .prep .projectCard{
           border:1px solid rgba(76,123,178,.36);
           background:
             radial-gradient(circle at 90% 10%,rgba(67,119,183,.14),transparent 34%),
-            linear-gradient(145deg,rgba(20,38,60,.94),rgba(13,20,29,.96));
+            linear-gradient(145deg,#111822,#090c0d);
         }
         .planned .projectCard{
           border:1px solid rgba(151,66,82,.36);
           background:
             radial-gradient(circle at 90% 10%,rgba(154,64,82,.14),transparent 34%),
-            linear-gradient(145deg,rgba(56,23,31,.94),rgba(25,14,18,.96));
+            linear-gradient(145deg,#1a1115,#090c0d);
         }
-        .projectArtwork{height:145px;margin:-20px -21px 15px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(238,181,73,.35),transparent 48%),linear-gradient(135deg,#3a2e1b,#111820 80%);border-bottom:1px solid rgba(230,192,95,.2)}
+        .projectArtwork{height:190px;margin:-20px -21px 15px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(238,181,73,.35),transparent 48%),linear-gradient(135deg,#3a2e1b,#111820 80%);border-bottom:1px solid rgba(230,192,95,.2)}
         .projectArtwork:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 25px,rgba(255,255,255,.025) 26px 27px)}
         .projectArtwork span{font-size:78px;position:relative;filter:drop-shadow(0 15px 12px #0009)}
-        .projectCard:hover{transform:translateY(-1px)}
+        .projectCard:hover{transform:translateY(-4px);box-shadow:0 16px 45px #000a}
         .active .projectCard:hover{border-color:rgba(199,209,89,.52)}
         .prep .projectCard:hover{border-color:rgba(100,151,209,.54)}
         .planned .projectCard:hover{border-color:rgba(184,85,103,.54)}
@@ -241,7 +241,7 @@ export default function Projects() {
         @media(max-width:680px){
           .projectGrid{grid-template-columns:1fr;gap:10px}
           .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
-          .projectArtwork{height:100px;margin:-14px -16px 12px}
+          .projectArtwork{height:94px;margin:-14px -16px 12px}
           .projectArtwork span{font-size:65px}
           .titleRow{margin-top:9px}.projectCard h3{font-size:19px}
           .projectCard p{font-size:11px;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
