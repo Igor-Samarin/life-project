@@ -16,10 +16,10 @@ export default function Garage() {
       </div>
 
       <section className="lp-grid">
-        <article className="lp-card"><ProjectArt kind="car" className="lp-visual" /><div className="lp-cardLabel">Автомобиль</div><h3>Hyundai ix35</h3><p>Карточка текущего автомобиля: характеристики, пробег, история работ, неисправности и документы.</p><div className="lp-cardMeta">2013 · diesel · 2.0 · AWD</div></article>
-        <article className="lp-card"><ProjectArt kind="car" className="lp-visual" /><div className="lp-cardLabel">Сервис</div><h3>Обслуживание</h3><p>Масло, фильтры, тормоза, подвеска, шины и все выполненные или планируемые работы.</p><div className="lp-cardMeta">История + будущие работы</div></article>
-        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Экономика</div><h3>Стоимость владения</h3><p>Топливо, парковка, страховки, штрафы, платные дороги, ремонт и амортизация.</p><div className="lp-cardMeta">Месяц · год · на 1 км</div></article>
-        <article className="lp-card"><ProjectArt kind="car" className="lp-visual" /><div className="lp-cardLabel">Замена</div><h3>Следующая машина</h3><p>Отдельный сценарий выбора и финансирования следующего автомобиля с бюджетом и сравнением вариантов.</p><div className="lp-cardMeta">Покупка · кредит · лизинг</div></article>
+        <article className="lp-card"><ProjectArt kind="Hyundai ix35" className="lp-visual" /><div className="lp-cardLabel">Автомобиль</div><h3>Hyundai ix35</h3><p>Карточка текущего автомобиля: характеристики, пробег, история работ, неисправности и документы.</p><div className="lp-cardMeta">2013 · diesel · 2.0 · AWD</div></article>
+        <article className="lp-card"><ProjectArt kind="Обслуживание" className="lp-visual" /><div className="lp-cardLabel">Сервис</div><h3>Обслуживание</h3><p>Масло, фильтры, тормоза, подвеска, шины и все выполненные или планируемые работы.</p><div className="lp-cardMeta">История + будущие работы</div></article>
+        <article className="lp-card"><ProjectArt kind="Стоимость владения" className="lp-visual" /><div className="lp-cardLabel">Экономика</div><h3>Стоимость владения</h3><p>Топливо, парковка, страховки, штрафы, платные дороги, ремонт и амортизация.</p><div className="lp-cardMeta">Месяц · год · на 1 км</div></article>
+        <article className="lp-card"><ProjectArt kind="Следующая машина" className="lp-visual" /><div className="lp-cardLabel">Замена</div><h3>Следующая машина</h3><p>Отдельный сценарий выбора и финансирования следующего автомобиля с бюджетом и сравнением вариантов.</p><div className="lp-cardMeta">Покупка · кредит · лизинг</div></article>
       </section>
     </Layout>
   );
