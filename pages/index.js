@@ -7,7 +7,7 @@ const sections = [
   { href: "/family", icon: "🌳", title: "Семья", text: "Люди, семейное дерево, события, документы и общие цели.", tag: "Раздел 01" },
   { href: "/finances", icon: "💎", title: "Финансы", text: "Доходы, расходы, долги, резерв, цели и прогнозы.", tag: "Раздел 02" },
   { href: "/garage", icon: "🚘", title: "Гараж семьи", text: "Автомобили, обслуживание, расходы, документы и планы на замену.", tag: "Раздел 03" },
-  { href: "/projects", icon: "🤖", title: "Проекты", text: "Shopify, Taxi / Prague Tours и остальные бизнес-направления.", tag: "Раздел 04" },
+  { href: "/projects", icon: "🤖", title: "Проекты", text: "Shopify, проекты команды и самостоятельное направление Карины.", tag: "Раздел 04" },
   { href: "/private-vault", icon: "🔒", title: "Личный сейф", text: "Закрытый раздел. Пока доступен только безопасный предварительный экран.", tag: "PRIVATE VAULT" },
 ];
 
@@ -40,7 +40,7 @@ export default function Home() {
         <div className="priorityGrid">
           <Link href="/projects/shopify"><ProjectArt kind="Shopify" className="priorityArt"/><div><small>01 · Главный бизнес-фокус</small><strong>Shopify / LUMERA</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="Life Project" className="priorityArt"/><div><small>02 · Система управления</small><strong>LIFE PROJECT</strong></div></Link>
-          <Link href="/projects"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Текущий доход</small><strong>Taxi / Prague Tours</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Проект Карины · без участия Игоря</small><strong>Karina · Prague Private Tours</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="AI Product Monetization" className="priorityArt"/><div><small>04 · Личный AI</small><strong>Personal AI Companion</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="International Driver Platform · Europe & USA" className="priorityArt"/><div><small>05 · Подготовка</small><strong>Driver Platform</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="Trading Bots" className="priorityArt"/><div><small>06 · Исследование</small><strong>Trading Bots</strong></div></Link>
