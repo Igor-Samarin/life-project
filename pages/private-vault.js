@@ -22,7 +22,7 @@ export default function PrivateVault() {
             <div className="safePlate">P R I V A T E · V A U L T</div>
           </div>
         </div>
-      </div>
+      </div>}
       {inside && <section className="innerPreview"><div className="innerRune">ᛟ</div><h2>Внутренний архив</h2><p>Демонстрация интерфейса. Защищённый доступ ещё не подключён.</p><div className="innerTile">Особые дела · Недоступно</div><div className="innerTile">Документы · Недоступно</div><div className="innerTile">Личные записи · Недоступно</div><button type="button" className="open" onClick={()=>{setInside(false);setTurning(false);setNotice(false)}}>Закрыть сейф</button></section>}
       {!inside && <div className="locked"><span className="dot"/> СЕЙФ ЗАКРЫТ</div>}
       {!inside && <button type="button" className="open" disabled={turning} onClick={()=>setTurning(true)}>{turning ? "Дверь открывается…" : "Открыть сейф →"}</button>}
