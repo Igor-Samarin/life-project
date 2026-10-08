@@ -8,6 +8,7 @@ const sections = [
   { href: "/finances", icon: "💎", title: "Финансы", text: "Доходы, расходы, долги, резерв, цели и прогнозы.", tag: "Раздел 02" },
   { href: "/garage", icon: "🚘", title: "Гараж семьи", text: "Автомобили, обслуживание, расходы, документы и планы на замену.", tag: "Раздел 03" },
   { href: "/projects", icon: "🤖", title: "Проекты", text: "Shopify, Taxi / Prague Tours и остальные бизнес-направления.", tag: "Раздел 04" },
+  { href: "/private-vault", icon: "🔒", title: "Личный сейф", text: "Закрытый раздел. Пока доступен только безопасный предварительный экран.", tag: "PRIVATE VAULT" },
 ];
 
 export default function Home() {
