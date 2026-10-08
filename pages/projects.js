@@ -200,6 +200,7 @@ export default function Projects() {
       <h1 className="lp-title">Все проекты</h1>
       <p className="lp-subtitle">Статус любого проекта можно менять прямо на карточке. Нажимаешь «В работе», «Подготовка» или «Запланировано» — карточка сразу переезжает в нужный раздел.</p>
 
+      <p style={{marginTop:24}}><Link className="openProject" style={{padding:"16px 22px",fontSize:15,borderRadius:16,minHeight:52}} href="/projects/team">◈ Участники · Артём · Карина →</Link></p>
       <div className="lp-kpis">
         <div className="lp-kpi"><span>Всего</span><strong>{projectSeed.length}</strong></div>
         {grouped.map((group) => (
