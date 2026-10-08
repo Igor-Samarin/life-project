@@ -1,3 +1,4 @@
+import ProjectArt, { artForTitle } from "../components/ProjectArt";
 import Link from "next/link";
 import Layout from "../components/Layout";
 
@@ -18,7 +19,7 @@ export default function Home() {
       <section className="lp-grid">
         {sections.map((s) => (
           <Link href={s.href} key={s.href} className="lp-card">
-            <div className="lp-visual"><span>{s.icon}</span></div><div className="lp-cardLabel">{s.tag}</div>
+            <ProjectArt kind={artForTitle(s.title)} className="lp-visual" /><div className="lp-cardLabel">{s.tag}</div>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
             <div className="lp-cardMeta">Открыть раздел →</div>
