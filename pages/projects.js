@@ -48,6 +48,16 @@ const ownerActions = {
   "Personal AI Companion": ["Передать архив экспорта ChatGPT после получения", "Подтвердить границы доступа к личным данным", "Проверить первую версию eMemoryVault"],
   "Life Project": ["Проверить новый каталог проектов", "Выбрать три проекта для ближайшего фокуса", "Подтвердить правила уведомлений и согласований"]
 };
+const projectArtwork = {
+  "Відновимо":"🏠","Shopify":"🤖","Taxi / Private Driver / Prague Tours":"🚘","Life Project":"🌳",
+  "International Driver Platform · Europe & USA":"✈️","Trading Bots":"🪙","YouTube World":"🎬",
+  "Мир Насти · TikTok / YouTube":"🎤","Dating App":"💝","Crypto Shop / Digital Goods":"💎",
+  "AI Product Monetization":"🤖","Family Business Network":"🏰","Landscape Design · Prague / Czechia":"🌿",
+  "Amazon Books":"📚","Family Clothing Brand":"👑","NFT Family Art":"🎨",
+  "Private Outreach / Family Story":"✉️","Prague Casting & Content Studio":"🎥",
+  "Valencia DJ · Shop + Events":"🎧","Gift Travel Shop":"🛥️","Roblox Game":"🎮",
+  "Family Music Video":"🎼","Wedding Complex":"💍","Криптомир":"🪙","Флотилия Прага":"🚖","Пирамида":"🔺"
+};
 const projectVisuals = {
   "Shopify": {mark:"L", tone:"#e9d6a3"},
   "Відновимо": {mark:"✚", tone:"#9ac9d9"},
@@ -176,6 +186,9 @@ export default function Projects() {
             radial-gradient(circle at 90% 10%,rgba(154,64,82,.14),transparent 34%),
             linear-gradient(145deg,rgba(56,23,31,.94),rgba(25,14,18,.96));
         }
+        .projectArtwork{height:145px;margin:-20px -21px 15px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(238,181,73,.35),transparent 48%),linear-gradient(135deg,#3a2e1b,#111820 80%);border-bottom:1px solid rgba(230,192,95,.2)}
+        .projectArtwork:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 25px,rgba(255,255,255,.025) 26px 27px)}
+        .projectArtwork span{font-size:78px;position:relative;filter:drop-shadow(0 15px 12px #0009)}
         .projectCard:hover{transform:translateY(-1px)}
         .active .projectCard:hover{border-color:rgba(199,209,89,.52)}
         .prep .projectCard:hover{border-color:rgba(100,151,209,.54)}
@@ -227,6 +240,8 @@ export default function Projects() {
         @media(max-width:680px){
           .projectGrid{grid-template-columns:1fr;gap:10px}
           .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
+          .projectArtwork{height:100px;margin:-14px -16px 12px}
+          .projectArtwork span{font-size:65px}
           .titleRow{margin-top:9px}.projectCard h3{font-size:19px}
           .projectCard p{font-size:11px;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
           .projectIcon{width:62px;height:62px;flex-basis:62px;border-radius:17px!important}
@@ -299,6 +314,7 @@ export default function Projects() {
 
             {group.projects.map((project) => (
               <article className="projectCard" key={project.title}>
+                <div className="projectArtwork" aria-hidden="true"><span>{projectArtwork[project.title] || "✨"}</span></div>
                 <div className="metaLine">
                   <span className="meta">{project.meta}</span>
                   <span className="priority">{project.priority}</span>
