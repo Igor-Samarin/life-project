@@ -1,11 +1,10 @@
-import {useEffect,useMemo,useState} from "react";
+import {useMemo,useState} from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
 const albumNames=["Семейные моменты","Милена","Даниил","Путешествия","Праздники","Школа и достижения","Не разбирать"];
 const tips=[["01","Загрузить","Выбери фотографии с телефона. Они останутся только в памяти этой вкладки."],["02","Отобрать","Отметь семейные снимки, исключи случайные и личные."],["03","Разложить","Выбери альбом для каждого снимка. Сохранение в облако появится позже."]];
 export default function FamilyPhotos(){
  const [photos,setPhotos]=useState([]),[filter,setFilter]=useState("Все"),[frequency,setFrequency]=useState("Каждую неделю");
- useEffect(()=>()=>{photos.forEach(p=>URL.revokeObjectURL(p.url))},[photos]);
  const selected=useMemo(()=>photos.filter(p=>filter==="Все"||p.album===filter),[photos,filter]);
  function addFiles(files){if(!files)return;const arr=Array.from(files).filter(f=>f.type.startsWith("image/")).slice(0,60);setPhotos(prev=>[...prev,...arr.map((file,i)=>({id:Date.now()+"-"+i+"-"+Math.random(),name:file.name,url:URL.createObjectURL(file),album:"На проверку",approved:false}))].slice(0,120))}
  function change(id,patch){setPhotos(prev=>prev.map(p=>p.id===id?{...p,...patch}:p))}
