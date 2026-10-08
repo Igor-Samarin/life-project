@@ -17,6 +17,7 @@ const projectSeed = [
   { title: "Taxi / Private Driver / Prague Tours", icon: "➤", text: "Текущий доход: прямые клиенты, туристические маршруты по Праге, визитки, QR, бронирования и частные поездки.", meta: "Текущий доход", priority: "Работа сейчас", status: "active" },
   { title: "Life Project", icon: "◎", text: "Единый личный кабинет: проекты, семья, финансы, гараж, планы, задачи, статусы и единый центр управления.", meta: "Система", priority: "Собираем в один кабинет", status: "active" },
 
+  { title: "AI Template Studio", icon: "▧", text: "Отдельная студия цифровых продуктов: оригинальные шаблоны сайтов, лендингов, e-commerce тем, UI-компонентов и готовых наборов для бизнеса. AI помогает с дизайном, кодом, тестированием, документацией и демо; продажа лицензий через маркетплейсы и собственный магазин.", meta: "Digital Products / Templates", priority: "Новый проект · MVP", status: "prep" },
   { title: "International Driver Platform · Europe & USA", icon: "✈", text: "Международный сервис поездок: премиальные водители со своими авто, аэропорт ↔ отель, «машина сейчас», бронирование, геолокация и мобильные приложения.", meta: "Mobility", priority: "Прототип / план", status: "prep" },
   { title: "Trading Bots", icon: "⌁", text: "Крипто-боты: несколько стратегий, бэктест, paper trading, малый депозит и отдельный бот фундаментальных новостей.", meta: "Fintech", priority: "Исследование", status: "prep" },
   { title: "YouTube World", icon: "▶", text: "AI-производство каналов и короткого контента: сценарии, аватары, оформление, анализ, автоматизация и будущая публикация.", meta: "Media / AI", priority: "Подготовка", status: "prep" },
@@ -44,6 +45,7 @@ const projectSeed = [
 
 
 const ownerActions = {
+  "AI Template Studio": ["Выбрать первую категорию шаблонов: лендинги, WordPress или Shopify", "Утвердить первый демонстрационный дизайн и стиль", "Согласовать площадки продажи и модель лицензирования"],
   "Shopify": ["Проверить предупреждение Supplier SKU has changed у LED-маски", "Подтвердить поставщика и варианты после сверки", "Утвердить товары и цены перед публикацией"],
   "Відновимо": ["Подтвердить доступ разработчика к отдельному репозиторию", "Утвердить объём первой доработки", "Проверить мобильный прототип перед публикацией"],
   "Personal AI Companion": ["Передать архив экспорта ChatGPT после получения", "Подтвердить границы доступа к личным данным", "Проверить первую версию eMemoryVault"],
@@ -51,7 +53,7 @@ const ownerActions = {
 };
 const projectArtwork = {
   "Відновимо":"🏠","Shopify":"🤖","Taxi / Private Driver / Prague Tours":"🚘","Life Project":"🌳",
-  "International Driver Platform · Europe & USA":"✈️","Trading Bots":"🪙","YouTube World":"🎬",
+  "AI Template Studio":"🧩","International Driver Platform · Europe & USA":"✈️","Trading Bots":"🪙","YouTube World":"🎬",
   "Мир Насти · TikTok / YouTube":"🎤","Dating App":"💝","Crypto Shop / Digital Goods":"💎",
   "AI Product Monetization":"🤖","Family Business Network":"🏰","Landscape Design · Prague / Czechia":"🌿",
   "Amazon Books":"📚","Family Clothing Brand":"👑","NFT Family Art":"🎨",
