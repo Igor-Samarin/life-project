@@ -2,10 +2,10 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 
 const sections = [
-  { href: "/family", icon: "◈", title: "Семья", text: "Люди, семейное дерево, события, документы и общие цели.", tag: "Раздел 01" },
-  { href: "/finances", icon: "◇", title: "Финансы", text: "Доходы, расходы, долги, резерв, цели и прогнозы.", tag: "Раздел 02" },
-  { href: "/garage", icon: "◆", title: "Гараж семьи", text: "Автомобили, обслуживание, расходы, документы и планы на замену.", tag: "Раздел 03" },
-  { href: "/projects", icon: "◎", title: "Проекты", text: "Shopify, Taxi / Prague Tours и остальные бизнес-направления.", tag: "Раздел 04" },
+  { href: "/family", icon: "🌳", title: "Семья", text: "Люди, семейное дерево, события, документы и общие цели.", tag: "Раздел 01" },
+  { href: "/finances", icon: "💎", title: "Финансы", text: "Доходы, расходы, долги, резерв, цели и прогнозы.", tag: "Раздел 02" },
+  { href: "/garage", icon: "🚘", title: "Гараж семьи", text: "Автомобили, обслуживание, расходы, документы и планы на замену.", tag: "Раздел 03" },
+  { href: "/projects", icon: "🤖", title: "Проекты", text: "Shopify, Taxi / Prague Tours и остальные бизнес-направления.", tag: "Раздел 04" },
 ];
 
 export default function Home() {
@@ -18,8 +18,8 @@ export default function Home() {
       <section className="lp-grid">
         {sections.map((s) => (
           <Link href={s.href} key={s.href} className="lp-card">
-            <div className="lp-cardLabel">{s.tag}</div>
-            <h3>{s.icon} &nbsp;{s.title}</h3>
+            <div className="lp-visual"><span>{s.icon}</span></div><div className="lp-cardLabel">{s.tag}</div>
+            <h3>{s.title}</h3>
             <p>{s.text}</p>
             <div className="lp-cardMeta">Открыть раздел →</div>
           </Link>
