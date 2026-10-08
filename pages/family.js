@@ -9,10 +9,10 @@ export default function Family() {
       <p className="lp-subtitle">Единый семейный центр: люди, важные события, общие цели, документы, планы и всё, что относится к семье.</p>
 
       <div className="lp-kpis">
-        <div className="lp-kpi"><span>Структура</span><strong>Семейное дерево</strong></div>
-        <div className="lp-kpi"><span>Фокус</span><strong>Общие цели</strong></div>
-        <div className="lp-kpi"><span>Контроль</span><strong>События</strong></div>
-        <div className="lp-kpi"><span>Архив</span><strong>Документы</strong></div>
+        <div className="lp-kpi"><span>Структура · показатель</span><strong>Семейное дерево</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Структура родственных связей — раздел готовится</small></div>
+        <div className="lp-kpi"><span>Фокус · показатель</span><strong>Общие цели</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Список семейных целей и контроль сроков</small></div>
+        <div className="lp-kpi"><span>Контроль · показатель</span><strong>События</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Важные даты и напоминания</small></div>
+        <div className="lp-kpi"><span>Архив · показатель</span><strong>Документы</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Личный семейный архив — раздел готовится</small></div>
       </div>
 
       <section className="lp-grid">
