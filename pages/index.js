@@ -19,7 +19,7 @@ export default function Home() {
       <section className="lp-grid">
         {sections.map((s) => (
           <Link href={s.href} key={s.href} className="lp-card">
-            <ProjectArt kind={artForTitle(s.title)} className="lp-visual" /><div className="lp-cardLabel">{s.tag}</div>
+            <ProjectArt kind={s.title} className="lp-visual" /><div className="lp-cardLabel">{s.tag}</div>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
             <div className="lp-cardMeta">Открыть раздел →</div>
