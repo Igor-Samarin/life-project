@@ -49,7 +49,7 @@ const fallback="photo-1518770660439-4636190af475";
 export function artForTitle(title=""){return title;}
 export default function ProjectArt({kind="Проекты",className=""}){
  const photo=images[kind]||fallback;
- const customImage=null;
+ const customImage=kind==="Hyundai ix35"?"https://commons.wikimedia.org/wiki/Special:FilePath/2013_Hyundai_ix35_Premium_2WD_CRDi_1.7.jpg?width=960":kind==="Lamborghini Urus"?"https://commons.wikimedia.org/wiki/Special:FilePath/Lamborghini_Urus_S_1X7A6796.jpg?width=1280":null;
  return <div className={"cinemaArt "+className} aria-label={"Иллюстрация: "+kind} role="img" style={{position:"relative",overflow:"hidden",minHeight:95,backgroundColor:"#171612",backgroundImage:'linear-gradient(0deg,rgba(4,6,8,.55),transparent 70%),url("'+(customImage||"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=960&q=82")+'")',backgroundSize:"cover",backgroundPosition:"center"}}>
  <div style={{position:"absolute",inset:0,background:"linear-gradient(125deg,rgba(246,193,91,.16),transparent 46%,rgba(0,0,0,.2))",pointerEvents:"none"}}/>
  </div>;
