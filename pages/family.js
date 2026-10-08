@@ -1,5 +1,6 @@
 import ProjectArt, { artForTitle } from "../components/ProjectArt";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 export default function Family() {
   return (
@@ -22,9 +23,19 @@ export default function Family() {
       </section>
 
       <section className="lp-panel">
-        <h2 className="lp-sectionTitle">Следующий слой</h2>
-        <p className="lp-subtitle">Сюда дальше добавим семейное дерево, отдельные профили, детский раздел, документы, подарки, поездки и общую историю семьи.</p>
+        <h2 className="lp-sectionTitle">Развитие семейного кабинета</h2>
+        <p className="lp-subtitle">Это план будущих функций, а не кнопка. Семейное дерево, отдельные профили, детский раздел и архив документов пока не созданы. Доступные разделы — ниже.</p>
+        <div className="familyLinks">
+          <Link href="/finances">Семейные финансы →</Link>
+          <Link href="/garage">Семейный гараж →</Link>
+          <Link href="/projects">Семейные проекты →</Link>
+        </div>
       </section>
+      <style jsx>{`
+        .familyLinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+        .familyLinks :global(a){padding:14px 18px;border-radius:12px;border:1px solid #bb9e5866;background:linear-gradient(130deg,#312819,#151719);color:#f0db9e;font-size:13px}
+        .familyLinks :global(a:hover){border-color:#f2d07a}
+      `}</style>
     </Layout>
   );
 }
