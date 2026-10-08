@@ -21,10 +21,24 @@ export function artForTitle(title="") {
  if(/casting|video|tiktok|youtube|nft|art/.test(t))return "camera";
  return "diamond";
 }
+const photoByKind={
+ robot:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1000&q=85",
+ car:"https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1000&q=85",
+ home:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=85",
+ travel:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1000&q=85",
+ tree:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000&q=85",
+ coins:"https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1000&q=85",
+ garden:"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1000&q=85",
+ camera:"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1000&q=85",
+ game:"https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1000&q=85",
+ books:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=1000&q=85",
+ music:"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1000&q=85",
+ diamond:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=85"
+};
 export default function ProjectArt({kind="diamond",className=""}) {
  const id="art-"+kind;
- return <div className={"cinemaArt "+className} aria-hidden="true">
- <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" role="img">
+ return <div className={"cinemaArt "+className} aria-hidden="true" style={{backgroundImage:`linear-gradient(0deg,rgba(5,7,9,.58),transparent 48%),url("${photoByKind[kind]||photoByKind.diamond}")`,backgroundSize:"cover",backgroundPosition:"center"}}><span className="artShine" />
+ <svg style={{display:"none"}} viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" role="img">
  <defs>
   <radialGradient id={id+"bg"}><stop stopColor="#594525"/><stop offset=".55" stopColor="#1d2127"/><stop offset="1" stopColor="#080b0d"/></radialGradient>
   <linearGradient id={id+"gold"} x1="0" x2="1" y1="0" y2="1"><stop stopColor="#fff4bb"/><stop offset=".24" stopColor="#e5b856"/><stop offset=".58" stopColor="#705023"/><stop offset=".85" stopColor="#f1cc75"/><stop offset="1" stopColor="#33220d"/></linearGradient>
