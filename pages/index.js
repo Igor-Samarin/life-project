@@ -27,20 +27,24 @@ export default function Home() {
         <h2 className="lp-sectionTitle">Центр управления</h2>
         <p className="lp-subtitle">Быстрые переходы к действиям. Выбери направление — откроется соответствующий рабочий раздел.</p>
         <div className="lp-controlLinks">
-          <Link href="/projects" className="lp-controlLink"><ProjectArt kind="Life Project" className="controlArt"/><strong>Проекты и решения</strong><span>Проверить следующие действия →</span></Link>
-          <Link href="/projects/shopify" className="lp-controlLink"><ProjectArt kind="Shopify" className="controlArt"/><strong>Shopify</strong><span>Товары, задачи, магазин →</span></Link>
-          <Link href="/finances" className="lp-controlLink"><ProjectArt kind="Финансы" className="controlArt"/><strong>Финансы</strong><span>Бюджет и показатели →</span></Link>
-          <Link href="/garage" className="lp-controlLink"><ProjectArt kind="Гараж семьи" className="controlArt"/><strong>Гараж</strong><span>Hyundai и план замены →</span></Link>
+          <Link href="/projects" className="lp-controlLink"><ProjectArt kind="Life Project" className="controlArt"/><strong>Проекты</strong><span>Все направления и решения →</span></Link>
+          <Link href="/family" className="lp-controlLink"><ProjectArt kind="Семья" className="controlArt"/><strong>Семья</strong><span>Семейные цели и события →</span></Link>
+          <Link href="/finances" className="lp-controlLink"><ProjectArt kind="Финансы" className="controlArt"/><strong>Финансы</strong><span>Доходы, расходы и резерв →</span></Link>
+          <Link href="/garage" className="lp-controlLink"><ProjectArt kind="Гараж семьи" className="controlArt"/><strong>Гараж семьи</strong><span>Автомобили и планы →</span></Link>
         </div>
       </section>
       <section className="lp-panel">
         <h2 className="lp-sectionTitle">Быстрый доступ</h2>
         <p className="lp-subtitle">Открывай нужный раздел сразу с главной. Все переходы ведут на существующие страницы приложения.</p>
         <div className="quickAccess">
-          <Link href="/projects/shopify/lumera">✦ Магазин LUMERA <span>Открыть →</span></Link>
-          <Link href="/projects/team">◈ Команда проектов <span>Открыть →</span></Link>
-          <Link href="/family">♧ Семейные планы <span>Открыть →</span></Link>
-          <Link href="/projects">▤ Очередь проектов <span>Открыть →</span></Link>
+          <Link href="/projects/shopify/lumera" className="quickTile"><ProjectArt kind="Shopify" className="quickArt"/><div><strong>Магазин LUMERA</strong><span>Товары, витрина и запуск →</span></div></Link>
+          <Link href="/projects/shopify" className="quickTile"><ProjectArt kind="Проекты" className="quickArt"/><div><strong>Shopify · магазины</strong><span>Развитие e-commerce →</span></div></Link>
+          <Link href="/projects/team" className="quickTile"><ProjectArt kind="Family Business Network" className="quickArt"/><div><strong>Команда проектов</strong><span>Ответственные и задачи →</span></div></Link>
+          <Link href="/projects" className="quickTile"><ProjectArt kind="Life Project" className="quickArt"/><div><strong>Очередь проектов</strong><span>Активные и будущие идеи →</span></div></Link>
+          <Link href="/family" className="quickTile"><ProjectArt kind="Семья" className="quickArt"/><div><strong>Семья</strong><span>Планы и события →</span></div></Link>
+          <Link href="/finances" className="quickTile"><ProjectArt kind="Семейный доход" className="quickArt"/><div><strong>Семейный бюджет</strong><span>Доходы и расходы →</span></div></Link>
+          <Link href="/garage" className="quickTile"><ProjectArt kind="Hyundai ix35" className="quickArt"/><div><strong>Текущий автомобиль</strong><span>Hyundai ix35 и сервис →</span></div></Link>
+          <Link href="/garage" className="quickTile"><ProjectArt kind="Lamborghini Urus" className="quickArt"/><div><strong>Автомобильная мечта</strong><span>Цели семейного гаража →</span></div></Link>
         </div>
       </section>
       </div>
@@ -70,11 +74,14 @@ export default function Home() {
         :global(.lp-controlLink){padding:18px;border:1px solid #a18a4e66;border-radius:15px;background:linear-gradient(140deg,#332a1a,#131519);display:flex;flex-direction:column;gap:12px;min-height:205px;overflow:hidden;transition:.2s}
         :global(.lp-controlLink:hover){border-color:#ebc66c;transform:translateY(-3px)}
         :global(.controlArt){height:112px;margin:-18px -18px 2px;border-bottom:1px solid #d6b66155}
-        .quickAccess{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-        .quickAccess :global(a){display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-radius:14px;border:1px solid #bda16055;background:linear-gradient(120deg,#282419,#121416);color:#f0dcaa;font-size:14px}
+        .quickAccess{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}
+        .quickAccess :global(a){display:flex;flex-direction:column;overflow:hidden;border-radius:17px;border:1px solid #bda16077;background:linear-gradient(120deg,#282419,#121416);color:#f0dcaa;min-height:210px;transition:.2s}
+        .quickAccess :global(.quickArt){height:135px;min-height:135px;border-bottom:1px solid #e4bd6977}
+        .quickAccess :global(.quickTile>div:last-child){display:flex;flex-direction:column;gap:8px;padding:15px}
+        .quickAccess :global(strong){font-size:15px;color:#f6d88c}
         .quickAccess :global(a:hover){border-color:#edcd7b}
         .quickAccess :global(span){color:#c6ae75;font-size:12px}
-        @media(max-width:600px){.quickAccess{grid-template-columns:1fr}}
+        @media(max-width:1000px){.quickAccess{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:440px){.quickAccess{gap:10px}.quickAccess :global(.quickArt){height:105px;min-height:105px}.quickAccess :global(.quickTile>div:last-child){padding:11px}.quickAccess :global(strong){font-size:13px}}
         :global(.lp-controlLink strong){font-size:16px;color:#f3db95}
         :global(.lp-controlLink span){font-size:12px;color:#b3ada0}
         @media(max-width:850px){.lp-controlLinks{grid-template-columns:repeat(2,1fr)}}
