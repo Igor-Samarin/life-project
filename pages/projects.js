@@ -11,6 +11,7 @@ const statusConfig = [
 ];
 
 const projectSeed = [
+  { title: "Відновимо", icon: "✚", text: "Помощь после повреждения жилья: пошаговое обращение и подготовка материалов. Веб-прототип и код требуют синхронизации.", meta: "Социальный продукт", href: "https://vidnovymo.vercel.app", priority: "Проверка и доработка", status: "active" },
   { title: "Shopify", icon: "◇", text: "Главный e-commerce проект: подбор товаров, тесты, магазины, поставщики, аналитика и масштабирование.", meta: "E-commerce", href: "/projects/shopify", priority: "Приоритет №1", status: "active" },
   { title: "Taxi / Private Driver / Prague Tours", icon: "➤", text: "Текущий доход: прямые клиенты, туристические маршруты по Праге, визитки, QR, бронирования и частные поездки.", meta: "Текущий доход", priority: "Работа сейчас", status: "active" },
   { title: "Life Project", icon: "◎", text: "Единый личный кабинет: проекты, семья, финансы, гараж, планы, задачи, статусы и единый центр управления.", meta: "Система", priority: "Собираем в один кабинет", status: "active" },
@@ -40,6 +41,26 @@ const projectSeed = [
   { title: "Пирамида", icon: "△", text: "Отдельный проект с 10 уровнями. Идея сохранена, но пока не развиваем и не трогаем.", meta: "Отдельный концепт", priority: "Позже", status: "planned" }
 ];
 
+const collaboration = {
+  "Shopify": {
+    team: "Игорь — решения и маркетинг; Артём + AI — техническая реализация. Текущий доступ Артёма к Shopify нужно сверить.",
+    tasks: "Игорь: выбрать главный товар и рынок, утвердить цену. Артём: показать LUMERA, подтвердить поставку, проверить заказ.",
+    ownerBlock: "Ожидаются свежие данные о готовности магазина и поставке.",
+    teamBlock: "Фактические препятствия Артёма пока не сообщены; по плану ему нужны утверждённые товар, рынок и цена.",
+    next: "Открыть LUMERA → сверить готовность → принять решения → тестовый заказ.",
+    checkpoint: "8 октября, 17:00–18:00, Прага — предложенная проверка",
+    details: "/projects/shopify/lumera"
+  },
+  "Відновимо": {
+    team: "Игорь — владелец и продукт; Артём — согласованное участие в разработке. Доступ к приватному репозиторию пока не подтверждён.",
+    tasks: "Игорь: добавить Artem-Makarov в репозиторий. Артём: принять приглашение, сверить код и сохранить свою текущую работу.",
+    ownerBlock: "Нужно отправить приглашение GitHub и определить объём первой доработки.",
+    teamBlock: "При проверке 8 октября доступ GitHub отсутствовал. Опубликованный прототип отличается от кода.",
+    next: "Доступ → перенос работы Артёма в отдельную ветку → проверка изменений → обновление приложения.",
+    checkpoint: "После принятия приглашения — сравнение версий; срок доработки ещё не согласован.",
+    details: "https://github.com/Igor-Samarin/Vidnovymo"
+  }
+};
 export default function Projects() {
   const [statuses, setStatuses] = useState(() =>
     Object.fromEntries(projectSeed.map((project) => [project.title, project.status]))
@@ -87,6 +108,12 @@ export default function Projects() {
   return (
     <Layout active="/projects">
       <style jsx>{`
+        .workDetails{margin-top:18px;border-top:1px solid #d6bd6a22;padding-top:14px}
+        .workDetails summary{cursor:pointer;color:#ead797;font-size:13px;padding:8px 0}
+        .workDetails dl{font-size:12px;line-height:1.6;margin:12px 0}
+        .workDetails dt{color:#e4d4a5;margin-top:12px}
+        .workDetails dd{color:#aaa69b;margin:4px 0 0}
+        .workDetails .workLink{display:inline-block;color:#ead797;padding:10px 0;font-size:13px}
         .statusNav{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
         .statusPill{padding:8px 12px;border-radius:999px;font-size:11px}
         .statusPill strong{margin-left:6px}
@@ -212,6 +239,19 @@ export default function Projects() {
                   <h3>{project.title}</h3>
                 </div>
                 <p>{project.text}</p>
+                <details className="workDetails">
+                  <summary>Команда и работа · задачи / препятствия</summary>
+                  <dl>
+                    <dt>Участники и подключение</dt><dd>{collaboration[project.title]?.team || "Игорь — владелец. Другие участники и их доступ не подтверждены."}</dd>
+                    <dt>Ближайшие задачи</dt><dd>{collaboration[project.title]?.tasks || (statuses[project.title] === "planned" ? "Вернуться к концепции при активации проекта; исполнитель не назначен." : "Определить ближайший результат и назначить исполнителя; актуальный отчёт отсутствует.")}</dd>
+                    <dt>Мои препятствия</dt><dd>{collaboration[project.title]?.ownerBlock || "Не зафиксированы. Требуется уточнить ближайшее решение владельца."}</dd>
+                    <dt>Препятствия исполнителя</dt><dd>{collaboration[project.title]?.teamBlock || "Не сообщены. Подтверждённого отчёта исполнителя нет."}</dd>
+                    <dt>Следующий шаг</dt><dd>{collaboration[project.title]?.next || "Определить результат → ответственного → срок → получить отчёт."}</dd>
+                    <dt>Контрольная точка</dt><dd>{collaboration[project.title]?.checkpoint || "Срок пока не назначен."}</dd>
+                  </dl>
+                  {collaboration[project.title]?.details && <Link className="workLink" href={collaboration[project.title].details}>{project.title === "Shopify" ? "LUMERA · подробные задачи →" : "Репозиторий разработки →"}</Link>}
+                  <p>План и последние известные факты. Автоматические отчёты участников пока не подключены.</p>
+                </details>
 
                 <div className="cardBottom">
                   <div className="bottomRow">
