@@ -9,10 +9,10 @@ export default function Finances() {
       <p className="lp-subtitle">Полный семейный денежный контур: доходы, обязательные и переменные расходы, долги, резерв, цели и прогнозы.</p>
 
       <div className="lp-kpis">
-        <div className="lp-kpi"><span>Главный показатель</span><strong>Чистый остаток</strong></div>
-        <div className="lp-kpi"><span>Резерв</span><strong>Подушка</strong></div>
-        <div className="lp-kpi"><span>Обязательства</span><strong>Долговая нагрузка</strong></div>
-        <div className="lp-kpi"><span>Прогноз</span><strong>Месяц / год</strong></div>
+        <div className="lp-kpi"><span>Главный показатель · показатель</span><strong>Чистый остаток</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Доходы минус расходы — расчёт после ввода данных</small></div>
+        <div className="lp-kpi"><span>Резерв · показатель</span><strong>Подушка</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Размер резерва и количество месяцев покрытия расходов</small></div>
+        <div className="lp-kpi"><span>Обязательства · показатель</span><strong>Долговая нагрузка</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>Сумма обязательных платежей и остаток задолженности</small></div>
+        <div className="lp-kpi"><span>Прогноз · показатель</span><strong>Месяц / год</strong><small style={{display:"block",marginTop:9,color:"#a59e8f",lineHeight:1.45,fontSize:11}}>План поступлений и платежей по периодам</small></div>
       </div>
 
       <section className="lp-grid">
