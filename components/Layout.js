@@ -38,6 +38,8 @@ export default function Layout({ children, active }) {
         .lp-subtitle{max-width:760px;color:#98948b;font-size:15px;line-height:1.7;margin:20px 0 0}
         .lp-sectionTitle{font-family:Georgia,serif;font-size:28px;font-weight:400;margin:0 0 16px}
         .lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+        .cinemaArt{overflow:hidden;position:relative}
+        .cinemaArt svg{display:block;width:100%;height:100%}
         .lp-visual{height:145px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
         .lp-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.025) 25px 26px)}
         .lp-visual span{font-size:75px;filter:drop-shadow(0 15px 12px #0009);position:relative;transform:rotate(-5deg)}
