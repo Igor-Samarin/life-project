@@ -1,3 +1,4 @@
+import ProjectArt, { artForTitle } from "../components/ProjectArt";
 import Layout from "../components/Layout";
 
 export default function Finances() {
@@ -15,12 +16,12 @@ export default function Finances() {
       </div>
 
       <section className="lp-grid">
-        <article className="lp-card"><div className="lp-visual"><span>💰</span></div><div className="lp-cardLabel">Доходы</div><h3>Семейный доход</h3><p>Доходы каждого члена семьи, такси, бизнесы, проекты и другие источники — отдельно и суммарно.</p><div className="lp-cardMeta">Факт · план · прогноз</div></article>
-        <article className="lp-card"><div className="lp-visual"><span>💳</span></div><div className="lp-cardLabel">Расходы</div><h3>Все категории</h3><p>Жильё, питание, авто, страховки, дети, связь, медицина, налоги, подписки, отдых и нерегулярные платежи.</p><div className="lp-cardMeta">Обязательные · переменные</div></article>
-        <article className="lp-card"><div className="lp-visual"><span>🏦</span></div><div className="lp-cardLabel">Обязательства</div><h3>Долги и кредиты</h3><p>Остаток долга, ежемесячный платёж, срок, процент и общая нагрузка на семейный бюджет.</p><div className="lp-cardMeta">Контроль и план погашения</div></article>
-        <article className="lp-card"><div className="lp-visual"><span>💎</span></div><div className="lp-cardLabel">Накопления</div><h3>Резерв</h3><p>Финансовая подушка и отдельные накопления на крупные цели, покупки и будущие проекты.</p><div className="lp-cardMeta">Безопасность семьи</div></article>
-        <article className="lp-card"><div className="lp-visual"><span>📈</span></div><div className="lp-cardLabel">Прогноз</div><h3>До конца периода</h3><p>Прогноз свободных денег до конца месяца и года с учётом обязательных платежей и планов.</p><div className="lp-cardMeta">Месяц · квартал · год</div></article>
-        <article className="lp-card"><div className="lp-visual"><span>⚖️</span></div><div className="lp-cardLabel">Распределение</div><h3>Свободные деньги</h3><p>Система будет подсказывать, какую часть направить в резерв, на долги, цели или развитие проектов.</p><div className="lp-cardMeta">Правила распределения</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Доходы</div><h3>Семейный доход</h3><p>Доходы каждого члена семьи, такси, бизнесы, проекты и другие источники — отдельно и суммарно.</p><div className="lp-cardMeta">Факт · план · прогноз</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Расходы</div><h3>Все категории</h3><p>Жильё, питание, авто, страховки, дети, связь, медицина, налоги, подписки, отдых и нерегулярные платежи.</p><div className="lp-cardMeta">Обязательные · переменные</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Обязательства</div><h3>Долги и кредиты</h3><p>Остаток долга, ежемесячный платёж, срок, процент и общая нагрузка на семейный бюджет.</p><div className="lp-cardMeta">Контроль и план погашения</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Накопления</div><h3>Резерв</h3><p>Финансовая подушка и отдельные накопления на крупные цели, покупки и будущие проекты.</p><div className="lp-cardMeta">Безопасность семьи</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Прогноз</div><h3>До конца периода</h3><p>Прогноз свободных денег до конца месяца и года с учётом обязательных платежей и планов.</p><div className="lp-cardMeta">Месяц · квартал · год</div></article>
+        <article className="lp-card"><ProjectArt kind="coins" className="lp-visual" /><div className="lp-cardLabel">Распределение</div><h3>Свободные деньги</h3><p>Система будет подсказывать, какую часть направить в резерв, на долги, цели или развитие проектов.</p><div className="lp-cardMeta">Правила распределения</div></article>
       </section>
     </Layout>
   );
