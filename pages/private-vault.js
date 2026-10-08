@@ -1,34 +1,52 @@
 import Layout from "../components/Layout";
-import {useEffect, useState} from "react";
 import Link from "next/link";
+import {useState} from "react";
 
-// This is an intentionally LOCKED visual placeholder, not an authentication mechanism.
+// Design preview ONLY. Do not accept passphrases or store confidential data here.
 export default function PrivateVault() {
-  const [showInfo, setShowInfo] = useState(false);
-  useEffect(() => {
-    const lock = () => setShowInfo(false);
-    document.addEventListener("visibilitychange", lock);
-    return () => document.removeEventListener("visibilitychange", lock);
-  }, []);
+  const [notice, setNotice] = useState(false);
   return <Layout>
-    <section style={{maxWidth:850,margin:"0 auto",textAlign:"center"}}>
-      <div className="lp-eyebrow">LIFE PROJECT · OWNER ONLY · DESIGN PREVIEW</div>
-      <h1 className="lp-title" style={{fontSize:"clamp(36px,6vw,68px)"}}>PRIVATE VAULT</h1>
-      <p className="lp-subtitle" style={{margin:"22px auto"}}>Личный сейф · закрытый раздел</p>
-      <div style={{position:"relative",margin:"35px auto",maxWidth:410,aspectRatio:"1/1",padding:20,borderRadius:35,border:"3px solid #c6a352",background:"radial-gradient(circle at 50% 45%,#4a3c24,#111319 65%,#08090c)",boxShadow:"0 0 75px #b38b2730, inset 0 0 50px #000"}}>
-        <div aria-hidden="true" className="vault-door" style={{height:"100%",border:"2px solid #c6a352",borderRadius:25,display:"grid",placeItems:"center",boxShadow:"inset 0 0 30px #000,0 0 15px #c8a54a55"}}>
-          <div style={{border:"12px double #d3ae57",borderRadius:"50%",width:180,height:180,display:"grid",placeItems:"center",fontSize:72,color:"#f4d58c",animation:"none",boxShadow:"0 0 35px #e5b95d55"}}>✦</div>
+    <section className="vault">
+      <div className="eyebrow">LIFE PROJECT / PRIVATE AREA</div>
+      <h1>Личный сейф</h1>
+      <p className="lead">PRIVATE VAULT · закрытый архив</p>
+      <div className="safe" role="img" aria-label="Закрытая металлическая дверь сейфа с золотым механическим замком">
+        <div className="safeFrame">
+          <div className="safeDoor">
+            <div className="rivets" aria-hidden="true">◆ <span>◆</span></div>
+            <div className="dialOuter"><div className="dialMiddle"><div className="dialInner"><span>✦</span></div></div></div>
+            <div className="safePlate">P R I V A T E · V A U L T</div>
+          </div>
         </div>
-        <div style={{position:"absolute",bottom:38,left:0,right:0,fontSize:13,letterSpacing:3,color:"#f0d48b"}}>LOCKED</div>
       </div>
-      <button type="button" onClick={()=>setShowInfo(true)} style={{cursor:"pointer",padding:"15px 28px",borderRadius:14,border:"1px solid #e4c16b",color:"#f9e7b0",background:"#302719",fontWeight:700}}>🔒 Открыть сейф</button>
-      {showInfo && <div role="alert" style={{margin:"24px auto",maxWidth:560,padding:20,border:"1px solid #a88b4d",borderRadius:14,background:"#1b1a17",lineHeight:1.6}}>
-        Сейф пока закрыт. Защищённый ввод кодовой фразы, шифрование и проверка владельца ещё не подключены. Не вводи здесь пароли или личные сведения.
-        <div><button type="button" onClick={()=>setShowInfo(false)} style={{marginTop:12,padding:9}}>Закрыть</button></div>
-      </div>}
-      <p style={{color:"#a5a097",fontSize:13,marginTop:28}}>Предварительный интерфейс. Данные не хранятся, доступ к личным делам не предоставляется.</p>
-      <p><Link href="/" style={{color:"#d7b96c"}}>← Главная</Link></p>
+      <div className="locked"><span className="dot"/> СЕЙФ ЗАКРЫТ</div>
+      <button type="button" className="open" onClick={()=>setNotice(true)}>Проверить доступ →</button>
+      {notice && <div className="notice" role="status">Это пока демонстрационный экран. Вход по кодовой фразе и защищённое хранилище ещё разрабатываются. Никакие пароли и личные данные сюда не вводи. <button onClick={()=>setNotice(false)} type="button">Понятно</button></div>}
+      <p className="warning">Предварительная версия. Личные дела и документы пока не хранятся.</p>
+      <Link href="/" className="back">← На главную</Link>
     </section>
-    <style jsx>{`@media (prefers-reduced-motion: no-preference){.vault-door{animation:vaultGlow 5s ease-in-out infinite;transform-origin:12% 50%;transform-style:preserve-3d}@keyframes vaultGlow{0%,100%{filter:brightness(1);transform:perspective(900px) rotateY(0deg)}45%{filter:brightness(1.18);transform:perspective(900px) rotateY(-5deg)}55%{filter:brightness(1.12);transform:perspective(900px) rotateY(-3deg)}}}`}</style>
+    <style jsx>{`
+      .vault{max-width:740px;margin:0 auto;text-align:center;padding:10px 0 36px}
+      .eyebrow{font-size:11px;letter-spacing:3px;color:#b99a56}
+      h1{font:normal clamp(35px,7vw,60px) Georgia,serif;color:#f1e0ae;margin:15px 0 7px}
+      .lead{color:#a7a298;font-size:13px;letter-spacing:1px}
+      .safe{width:min(100%,350px);aspect-ratio:1;margin:27px auto 14px;padding:14px;border:3px solid #a98945;border-radius:30px;background:linear-gradient(135deg,#69552c,#17191d 25%,#08090c 80%,#7b5d2d);box-shadow:0 12px 45px #0008,inset 0 0 0 3px #141516}
+      .safeFrame{width:100%;height:100%;padding:12px;border:2px solid #927a43;border-radius:21px;background:#111317}
+      .safeDoor{height:100%;border:2px solid #c9a85e;border-radius:15px;background:linear-gradient(135deg,#41403c 0%,#16191c 32%,#27282a 70%,#0e1013 100%);box-shadow:inset 0 0 30px #000a;position:relative;display:flex;align-items:center;justify-content:center}
+      .rivets{position:absolute;top:12px;left:16px;right:16px;display:flex;justify-content:space-between;color:#b89c5b;font-size:11px}
+      .dialOuter{width:57%;aspect-ratio:1;border-radius:50%;border:9px solid #c6a45b;box-shadow:0 0 0 4px #393022,0 10px 28px #000b,inset 0 0 18px #0009;background:repeating-conic-gradient(from 0deg,#bd9b55 0 3deg,#292a2b 3deg 30deg);display:grid;place-items:center}
+      .dialMiddle{width:76%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#e5c677,#6b542b 40%,#d7b36a);display:grid;place-items:center;border:3px solid #29251c}
+      .dialInner{width:67%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#4e4b42,#141619 75%);border:2px solid #ebc877;display:grid;place-items:center;color:#f4d38a;font-size:44px}
+      .safePlate{position:absolute;bottom:17px;font-size:9px;letter-spacing:2px;color:#d5b56c}
+      .locked{display:flex;justify-content:center;align-items:center;gap:8px;color:#d7bd7b;font-size:11px;letter-spacing:2px;margin:18px}
+      .dot{width:7px;height:7px;background:#e0b75b;border-radius:50%}
+      .open{padding:14px 26px;border:1px solid #c5a45e;background:linear-gradient(110deg,#46361d,#241e16);color:#ffe2a0;border-radius:12px;font-weight:600;cursor:pointer}
+      .notice{max-width:480px;margin:20px auto;padding:18px;color:#eee0c2;background:#25221b;border:1px solid #b79a5e;border-radius:12px;line-height:1.65;font-size:13px}
+      .notice button{display:block;margin:14px auto 0;padding:8px 17px;background:#44351f;color:#ffe1a1;border:1px solid #b79a5e;border-radius:8px;cursor:pointer}
+      .warning{color:#9b978e;font-size:12px;line-height:1.5;margin:24px auto}
+      .back{display:inline-block;color:#d8bc79;font-size:13px}
+      @media(max-width:500px){.vault{padding:0 4px}.safe{width:min(100%,290px);padding:11px}.safeFrame{padding:9px}.safePlate{letter-spacing:1px;font-size:8px}}
+      @media(prefers-reduced-motion:no-preference){.dialInner span{animation:glow 6s ease-in-out infinite}@keyframes glow{0%,100%{opacity:.75}50%{opacity:1}}}
+    `}</style>
   </Layout>;
 }
