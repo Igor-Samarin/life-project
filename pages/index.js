@@ -1,4 +1,4 @@
-import ProjectArt, { artForTitle } from "../components/ProjectArt";
+import ProjectArt from "../components/ProjectArt";
 import Link from "next/link";
 import Layout from "../components/Layout";
 
@@ -29,8 +29,23 @@ export default function Home() {
 
       <section className="lp-panel">
         <h2 className="lp-sectionTitle">Центр управления</h2>
-        <p className="lp-subtitle">Дальше каждый раздел будет превращаться в полноценный рабочий экран с реальными данными, задачами, финансами, прогрессом и связями между проектами.</p>
+        <p className="lp-subtitle">Быстрые переходы к действиям. Выбери направление — откроется соответствующий рабочий раздел.</p>
+        <div className="lp-controlLinks">
+          <Link href="/projects" className="lp-controlLink"><strong>◈ Проекты и решения</strong><span>Проверить следующие действия →</span></Link>
+          <Link href="/projects/shopify" className="lp-controlLink"><strong>◇ Shopify</strong><span>Товары, задачи, магазин →</span></Link>
+          <Link href="/finances" className="lp-controlLink"><strong>₿ Финансы</strong><span>Бюджет и показатели →</span></Link>
+          <Link href="/garage" className="lp-controlLink"><strong>▣ Гараж</strong><span>Hyundai и план замены →</span></Link>
+        </div>
       </section>
+      <style jsx>{`
+        .lp-controlLinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:25px}
+        :global(.lp-controlLink){padding:18px;border:1px solid #a18a4e66;border-radius:15px;background:linear-gradient(140deg,#332a1a,#131519);display:flex;flex-direction:column;gap:12px;min-height:100px;transition:.2s}
+        :global(.lp-controlLink:hover){border-color:#ebc66c;transform:translateY(-3px)}
+        :global(.lp-controlLink strong){font-size:16px;color:#f3db95}
+        :global(.lp-controlLink span){font-size:12px;color:#b3ada0}
+        @media(max-width:850px){.lp-controlLinks{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:420px){.lp-controlLinks{grid-template-columns:1fr}}
+      `}</style>
     </Layout>
   );
 }
