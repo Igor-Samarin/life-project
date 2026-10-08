@@ -1,3 +1,4 @@
+import ProjectArt, { artForTitle } from "../components/ProjectArt";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
@@ -314,7 +315,7 @@ export default function Projects() {
 
             {group.projects.map((project) => (
               <article className="projectCard" key={project.title}>
-                <div className="projectArtwork" aria-hidden="true"><span>{projectArtwork[project.title] || "✨"}</span></div>
+                <ProjectArt kind={artForTitle(project.title)} className="projectArtwork" />
                 <div className="metaLine">
                   <span className="meta">{project.meta}</span>
                   <span className="priority">{project.priority}</span>
