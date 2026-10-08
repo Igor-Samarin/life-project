@@ -15,6 +15,7 @@ export default function PrivateVault() {
       <p className="lead">PRIVATE VAULT · закрытый архив</p>
       {!inside && <div className={`safe ${turning ? "turning" : ""}`} role="img" aria-label="Закрытая металлическая дверь сейфа с золотым нордическим символом">
         <div className="safeFrame">
+          <div className="safeLight" aria-hidden="true">✧</div>
           <div className="safeDoor">
             <div className="rivets" aria-hidden="true">◆ <span>◆</span></div>
             <div className="dialOuter"><div className="dialMiddle"><div className="dialInner"><svg viewBox="0 0 100 100" width="70%" height="70%" aria-hidden="true"><g fill="none" stroke="#f0cc77" strokeWidth="4.8" strokeLinecap="round" strokeLinejoin="round"><path d="M50 9 L50 91 M50 9 L32 27 M50 9 L68 27 M50 91 L32 73 M50 91 L68 73 M10 50 L90 50 M10 50 L27 33 M10 50 L27 67 M90 50 L73 33 M90 50 L73 67 M21 21 L79 79 M79 21 L21 79"/><circle cx="50" cy="50" r="10" strokeWidth="3"/></g></svg></div></div></div>
@@ -36,14 +37,17 @@ export default function PrivateVault() {
       .lead{color:#a7a298;font-size:13px;letter-spacing:1px}
       .safe{width:min(100%,350px);aspect-ratio:1;margin:27px auto 14px;padding:14px;border:3px solid #a98945;border-radius:30px;background:linear-gradient(135deg,#69552c,#17191d 25%,#08090c 80%,#7b5d2d);box-shadow:0 12px 45px #0008,inset 0 0 0 3px #141516}
       .safeFrame{width:100%;height:100%;padding:12px;border:2px solid #927a43;border-radius:21px;background:#111317}
-      .safeDoor{height:100%;border:2px solid #c9a85e;border-radius:15px;background:linear-gradient(135deg,#41403c 0%,#16191c 32%,#27282a 70%,#0e1013 100%);box-shadow:inset 0 0 30px #000a;position:relative;display:flex;align-items:center;justify-content:center}
+      .safeLight{position:absolute;inset:12px;display:grid;place-items:center;font-size:74px;color:#f9d986;background:radial-gradient(circle,#927039,#211b13 60%,#090a0c);border-radius:14px}
+      .safeFrame{position:relative;perspective:800px}
+      .safeDoor{position:relative;z-index:1;transform-origin:left center;height:100%;border:2px solid #c9a85e;border-radius:15px;background:linear-gradient(135deg,#41403c 0%,#16191c 32%,#27282a 70%,#0e1013 100%);box-shadow:inset 0 0 30px #000a;position:relative;display:flex;align-items:center;justify-content:center}
       .rivets{position:absolute;top:12px;left:16px;right:16px;display:flex;justify-content:space-between;color:#b89c5b;font-size:11px}
       .dialOuter{width:57%;aspect-ratio:1;border-radius:50%;border:9px solid #c6a45b;box-shadow:0 0 0 4px #393022,0 10px 28px #000b,inset 0 0 18px #0009;background:repeating-conic-gradient(from 0deg,#bd9b55 0 3deg,#292a2b 3deg 30deg);display:grid;place-items:center}
       .dialMiddle{width:76%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#e5c677,#6b542b 40%,#d7b36a);display:grid;place-items:center;border:3px solid #29251c}
       .dialInner{width:67%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#4e4b42,#141619 75%);border:2px solid #ebc877;display:grid;place-items:center;color:#f4d38a;font-size:44px}
       .turning .dialOuter{transform:rotate(70deg)}
       .dialOuter{transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
-      .turning .safeDoor{box-shadow:inset 0 0 30px #000a,0 0 22px #d9ac5680}
+      .turning .safeDoor{animation:vaultOpen 2.5s ease-in-out forwards;box-shadow:inset 0 0 30px #000a,0 0 22px #d9ac5680}
+      @keyframes vaultOpen{0%,36%{transform:rotateY(0deg)}100%{transform:rotateY(-78deg)}}
       .safeDoor{transition:box-shadow 1s ease}
       .safePlate{position:absolute;bottom:17px;font-size:9px;letter-spacing:2px;color:#d5b56c}
       .locked{display:flex;justify-content:center;align-items:center;gap:8px;color:#d7bd7b;font-size:11px;letter-spacing:2px;margin:18px}
@@ -61,7 +65,7 @@ export default function PrivateVault() {
       .warning{color:#9b978e;font-size:12px;line-height:1.5;margin:24px auto}
       .back{display:inline-block;color:#d8bc79;font-size:13px}
       @media(max-width:500px){.vault{padding:0 4px}.safe{width:min(100%,290px);padding:11px}.safeFrame{padding:9px}.safePlate{letter-spacing:1px;font-size:8px}}
-      @media(prefers-reduced-motion:no-preference){.dialInner svg{animation:glow 4s ease-in-out infinite}@keyframes glow{0%,100%{opacity:.78;filter:drop-shadow(0 0 1px #b18b3e)}50%{opacity:1;filter:drop-shadow(0 0 6px #d5ac58)}}}@media(prefers-reduced-motion:reduce){.dialOuter,.safeDoor{transition:none}.dialInner svg{animation:none}}
+      @media(prefers-reduced-motion:no-preference){.dialInner svg{animation:glow 4s ease-in-out infinite}@keyframes glow{0%,100%{opacity:.78;filter:drop-shadow(0 0 1px #b18b3e)}50%{opacity:1;filter:drop-shadow(0 0 6px #d5ac58)}}}@media(prefers-reduced-motion:reduce){.dialOuter,.safeDoor{transition:none}.dialInner svg{animation:none}.turning .safeDoor{animation:none}}
     `}</style>
   </Layout>;
 }
