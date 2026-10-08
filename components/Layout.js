@@ -41,9 +41,9 @@ export default function Layout({ children, active }) {
         .cinemaArt{overflow:hidden;position:relative}
         .cinemaArt svg{display:block;width:100%;height:100%}
         .artShine{position:absolute;inset:0;background:linear-gradient(130deg,rgba(255,221,138,.12),transparent 42%,rgba(0,0,0,.35));pointer-events:none}
-        .lp-visual{height:170px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
-        .lp-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.025) 25px 26px)}
-        .lp-visual span{font-size:75px;filter:drop-shadow(0 15px 12px #0009);position:relative;transform:rotate(-5deg)}
+        :global(.lp-visual){height:170px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
+        :global(.lp-visual):before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.025) 25px 26px)}
+        :global(.lp-visual) span{font-size:75px;filter:drop-shadow(0 15px 12px #0009);position:relative;transform:rotate(-5deg)}
         .lp-card{min-height:300px;padding:24px;border:1px solid rgba(217,187,91,.14);background:linear-gradient(145deg,rgba(28,29,32,.72),rgba(12,13,15,.78));border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden}
         .lp-card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(205,175,80,.07);border-radius:50%;right:-55px;top:-62px}
         .lp-cardLabel{font-size:10px;color:#c9ad54;text-transform:uppercase;letter-spacing:.18em}
@@ -60,7 +60,7 @@ export default function Layout({ children, active }) {
         .lp-footer{max-width:1320px;margin:0 auto;padding:0 5vw 34px;color:#575750;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
         @media(max-width:900px){
           .lp-topbar{height:62px;padding:0 20px}
-          .lp-visual{height:125px}
+          :global(.lp-visual){height:125px}
           .lp-nav{padding:10px 16px;grid-template-columns:repeat(2,1fr)}
           .lp-navItem{min-height:48px;padding:0 12px;font-size:13px}
           .lp-main{padding:36px 18px 58px}
@@ -68,7 +68,7 @@ export default function Layout({ children, active }) {
           .lp-kpis{grid-template-columns:repeat(2,1fr)}
           .lp-status span:last-child{display:none}
         }
-        @media(max-width:600px){.lp-grid{grid-template-columns:1fr}.lp-card{min-height:270px}.lp-visual{height:150px}}
+        @media(max-width:600px){.lp-grid{grid-template-columns:1fr}.lp-card{min-height:270px}:global(.lp-visual){height:150px}}
         @media(max-width:420px){
           .lp-nav{grid-template-columns:1fr 1fr;gap:8px}
           .lp-navItem{font-size:12px}
