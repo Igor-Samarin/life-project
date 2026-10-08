@@ -41,6 +41,23 @@ const projectSeed = [
   { title: "Пирамида", icon: "△", text: "Отдельный проект с 10 уровнями. Идея сохранена, но пока не развиваем и не трогаем.", meta: "Отдельный концепт", priority: "Позже", status: "planned" }
 ];
 
+
+const ownerActions = {
+  "Shopify": ["Проверить предупреждение Supplier SKU has changed у LED-маски", "Подтвердить поставщика и варианты после сверки", "Утвердить товары и цены перед публикацией"],
+  "Відновимо": ["Подтвердить доступ разработчика к отдельному репозиторию", "Утвердить объём первой доработки", "Проверить мобильный прототип перед публикацией"],
+  "Personal AI Companion": ["Передать архив экспорта ChatGPT после получения", "Подтвердить границы доступа к личным данным", "Проверить первую версию eMemoryVault"],
+  "Life Project": ["Проверить новый каталог проектов", "Выбрать три проекта для ближайшего фокуса", "Подтвердить правила уведомлений и согласований"]
+};
+const projectVisuals = {
+  "Shopify": {mark:"L", tone:"#e9d6a3"},
+  "Відновимо": {mark:"✚", tone:"#9ac9d9"},
+  "Life Project": {mark:"◎", tone:"#dfbe78"},
+  "Trading Bots": {mark:"₿", tone:"#e6c47b"},
+  "Family Business Network": {mark:"◈", tone:"#dfbe78"},
+  "Landscape Design · Prague / Czechia": {mark:"❧", tone:"#a8d1ac"}
+};
+const actionList = (project) => ownerActions[project.title] || (project.status === "planned" ? [] : []);
+
 const collaboration = {
   "Shopify": {
     team: "Игорь — решения и маркетинг; Артём + AI — техническая реализация. Текущий доступ Артёма к Shopify нужно сверить.",
@@ -108,7 +125,7 @@ export default function Projects() {
   return (
     <Layout active="/projects">
       <style jsx>{`
-        .workDetails{margin-top:18px;border-top:1px solid #d6bd6a22;padding-top:14px}
+        .actionPreview{margin:14px 0 0;padding:12px;border-radius:12px;background:rgba(0,0,0,.19);border:1px solid rgba(220,191,100,.16)}\n        .actionPreview strong{font-size:11px;color:#ead797}\n        .actionPreview ol{padding-left:18px;margin:8px 0 0;color:#d6d1c4;font-size:11px;line-height:1.65}\n        .actionPreview p{margin:7px 0 0}\n        .projectIcon{font-size:20px!important}\n        .workDetails{margin-top:18px;border-top:1px solid #d6bd6a22;padding-top:14px}
         .workDetails summary{cursor:pointer;color:#ead797;font-size:13px;padding:8px 0}
         .workDetails dl{font-size:12px;line-height:1.6;margin:12px 0}
         .workDetails dt{color:#e4d4a5;margin-top:12px}
@@ -236,10 +253,10 @@ export default function Projects() {
                 </div>
 
                 <div className="titleRow">
-                  <div className="projectIcon" aria-hidden="true">{project.icon}</div>
+                  <div className="projectIcon" aria-hidden="true">{(projectVisuals[project.title]?.mark || project.icon)}</div>
                   <h3>{project.title}</h3>
                 </div>
-                <p>{project.text}</p>
+                <p>{project.text}</p>\n                <div className="actionPreview"><strong>Твои ближайшие действия</strong>{actionList(project).length ? <ol>{actionList(project).slice(0,3).map((task)=><li key={task}>{task}</li>)}</ol> : <p>{statuses[project.title] === "planned" ? "Проект отложен — сейчас действий не требуется." : "Подтверждённых блокирующих решений пока нет."}</p>}</div>
                 <details className="workDetails">
                   <summary>Команда и работа · задачи / препятствия</summary>
                   <dl>
