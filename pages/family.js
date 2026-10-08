@@ -15,9 +15,9 @@ export default function Family() {
       </div>
 
       <section className="lp-grid">
-        <article className="lp-card"><div className="lp-cardLabel">Профили</div><h3>Члены семьи</h3><p>Отдельная карточка для каждого: связи, важные данные, интересы, планы и персональные задачи.</p><div className="lp-cardMeta">Будет связано с семейным деревом</div></article>
-        <article className="lp-card"><div className="lp-cardLabel">Календарь</div><h3>События</h3><p>Дни рождения, школа, поездки, семейные дела и другие важные даты в одном месте.</p><div className="lp-cardMeta">Напоминания и общий календарь</div></article>
-        <article className="lp-card"><div className="lp-cardLabel">Развитие</div><h3>Цели семьи</h3><p>Общие финансовые, бытовые, образовательные и жизненные цели с прогрессом и сроками.</p><div className="lp-cardMeta">Реальный прогресс, не игровые цифры</div></article>
+        <article className="lp-card"><div className="lp-visual"><span>👨‍👩‍👧‍👦</span></div><div className="lp-cardLabel">Профили</div><h3>Члены семьи</h3><p>Отдельная карточка для каждого: связи, важные данные, интересы, планы и персональные задачи.</p><div className="lp-cardMeta">Будет связано с семейным деревом</div></article>
+        <article className="lp-card"><div className="lp-visual"><span>🗓️</span></div><div className="lp-cardLabel">Календарь</div><h3>События</h3><p>Дни рождения, школа, поездки, семейные дела и другие важные даты в одном месте.</p><div className="lp-cardMeta">Напоминания и общий календарь</div></article>
+        <article className="lp-card"><div className="lp-visual"><span>🌳</span></div><div className="lp-cardLabel">Развитие</div><h3>Цели семьи</h3><p>Общие финансовые, бытовые, образовательные и жизненные цели с прогрессом и сроками.</p><div className="lp-cardMeta">Реальный прогресс, не игровые цифры</div></article>
       </section>
 
       <section className="lp-panel">
