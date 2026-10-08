@@ -79,6 +79,8 @@ const collaboration = {
   }
 };
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [decisions, setDecisions] = useState({});
   const [statuses, setStatuses] = useState(() =>
     Object.fromEntries(projectSeed.map((project) => [project.title, project.status]))
   );
@@ -115,6 +117,8 @@ export default function Projects() {
     });
   };
 
+  const markDecision = (title, task) => setDecisions(current => ({...current, [title + ":" + task]: !current[title + ":" + task]}));
+
   const grouped = useMemo(() => {
     return statusConfig.map((status) => ({
       ...status,
@@ -125,7 +129,12 @@ export default function Projects() {
   return (
     <Layout active="/projects">
       <style jsx>{`
-        .actionPreview{margin:14px 0 0;padding:12px;border-radius:12px;background:rgba(0,0,0,.19);border:1px solid rgba(220,191,100,.16)}\n        .actionPreview strong{font-size:11px;color:#ead797}\n        .actionPreview ol{padding-left:18px;margin:8px 0 0;color:#d6d1c4;font-size:11px;line-height:1.65}\n        .actionPreview p{margin:7px 0 0}\n        .projectIcon{font-size:20px!important}\n        .workDetails{margin-top:18px;border-top:1px solid #d6bd6a22;padding-top:14px}
+        .actionPreview{margin:14px 0 0;padding:12px;border-radius:12px;background:rgba(0,0,0,.19);border:1px solid rgba(220,191,100,.16)}
+        .actionPreview strong{font-size:11px;color:#ead797}
+        .actionPreview ol{padding-left:18px;margin:8px 0 0;color:#d6d1c4;font-size:11px;line-height:1.65}
+        .actionPreview p{margin:7px 0 0}
+        .projectIcon{font-size:20px!important}
+        .workDetails{margin-top:18px;border-top:1px solid #d6bd6a22;padding-top:14px}
         .workDetails summary{cursor:pointer;color:#ead797;font-size:13px;padding:8px 0}
         .workDetails dl{font-size:12px;line-height:1.6;margin:12px 0}
         .workDetails dt{color:#e4d4a5;margin-top:12px}
@@ -202,9 +211,31 @@ export default function Projects() {
         .empty{grid-column:1/-1;padding:24px;border:1px dashed rgba(217,187,91,.15);border-radius:16px;color:#777d78;font-size:12px}
         .saveNote{margin-top:12px;color:#686d69;font-size:10px}
 
+        .mobileAction{display:none}
+        .detailsButton{margin-top:12px;text-align:left;border:0;background:none;color:#ead797;font-size:12px;cursor:pointer;padding:5px 0}
+        .detailBackdrop{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:15px}
+        .detailPanel{width:min(620px,100%);max-height:90vh;overflow:auto;border:1px solid #887543;border-radius:20px;padding:25px;background:#161a15;color:#e9e3d5;box-shadow:0 25px 80px #000}
+        .detailPanel h2{font-family:Georgia,serif;font-size:28px}.detailPanel h3{font-size:16px;margin-top:25px}.detailPanel p{color:#b4b0a6;line-height:1.6}
+        .detailClose{float:right;background:transparent;border:1px solid #776c4b;color:#ead797;padding:9px;border-radius:8px;cursor:pointer}
+        .decisionRow{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #504b37;padding:14px 0}
+        .decisionRow strong{font-size:13px;font-weight:500}.decisionRow small{display:block;color:#9b978b;margin-top:6px}
+        .decisionRow button{background:#c9d167;border:0;border-radius:8px;padding:9px 12px;cursor:pointer;color:#151a10;flex-shrink:0}
+        .detailDisclaimer{font-size:11px}
         @media(max-width:1000px){.projectGrid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:680px){
-          .projectGrid{grid-template-columns:1fr}
+          .projectGrid{grid-template-columns:1fr;gap:10px}
+          .projectCard{min-height:0;padding:14px 16px;border-radius:15px}
+          .titleRow{margin-top:9px}.projectCard h3{font-size:19px}
+          .projectCard p{font-size:11px;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+          .projectIcon{width:38px;height:38px;flex-basis:38px}
+          .actionPreview{padding:9px 11px;margin-top:9px}
+          .actionPreview strong{font-size:10px}.desktopActions{display:none}.mobileAction{display:block;color:#d8d1bc;font-size:11px;margin-top:5px}
+          .workDetails{display:none}.cardBottom{padding-top:9px}.statusArea{display:none}
+          .bottomRow{flex-direction:row;align-items:center}.openProject{font-size:11px}
+          .detailsButton{margin-top:7px}
+          .group{margin-top:24px}.groupTitle{font-size:25px}
+          .detailPanel{padding:17px}.decisionRow{align-items:flex-start;flex-direction:column}
+          .decisionRow button{align-self:flex-start}
           .groupHead{align-items:flex-start;flex-direction:column}
           .count{white-space:normal}
           .bottomRow{align-items:stretch;flex-direction:column}
@@ -213,6 +244,24 @@ export default function Projects() {
         }
       `}</style>
 
+      {selectedProject && <div className="detailBackdrop" role="presentation" onClick={() => setSelectedProject(null)}>
+        <section className="detailPanel" role="dialog" aria-modal="true" aria-label={"Задачи проекта " + selectedProject.title} onClick={event => event.stopPropagation()}>
+          <button className="detailClose" type="button" onClick={() => setSelectedProject(null)}>✕ Закрыть</button>
+          <div className="lp-eyebrow">{selectedProject.meta}</div>
+          <h2>{selectedProject.title}</h2>
+          <p>{selectedProject.text}</p>
+          <h3>Твои ближайшие решения</h3>
+          {actionList(selectedProject).length ? actionList(selectedProject).map((task,i) => <div className="decisionRow" key={task}>
+            <div><strong>{i+1}. {task}</strong><small>{decisions[selectedProject.title + ":" + task] ? "Отмечено тобой; выполнение ещё требует проверки" : "Ожидает твоего решения"}</small></div>
+            <button type="button" onClick={() => markDecision(selectedProject.title,task)}>{decisions[selectedProject.title + ":" + task] ? "Отменить отметку" : "Отметить"}</button>
+          </div>) : <p>Подтверждённых задач от тебя пока нет.</p>}
+          <h3>Команда и препятствия</h3>
+          <p>{collaboration[selectedProject.title]?.team || "Исполнители и доступы пока не подтверждены."}</p>
+          <p>{collaboration[selectedProject.title]?.teamBlock || "Актуальный отчёт исполнителя не подключён."}</p>
+          {selectedProject.href && <Link className="openProject" href={selectedProject.href}>Открыть проект →</Link>}
+          <p className="detailDisclaimer">Это рабочий план. Отметки не запускают автоматические действия и не синхронизируются между устройствами.</p>
+        </section>
+      </div>}
       <div className="lp-eyebrow">Раздел 04 · Единый каталог</div>
       <h1 className="lp-title">Все проекты</h1>
       <p className="lp-subtitle">Статус любого проекта можно менять прямо на карточке. Нажимаешь «В работе», «Подготовка» или «Запланировано» — карточка сразу переезжает в нужный раздел.</p>
@@ -253,10 +302,16 @@ export default function Projects() {
                 </div>
 
                 <div className="titleRow">
-                  <div className="projectIcon" aria-hidden="true">{(projectVisuals[project.title]?.mark || project.icon)}</div>
+                  <div className="projectIcon" aria-hidden="true"><svg viewBox="0 0 48 48" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">{project.title === "Відновимо" ? <><path d="M24 5v38M5 24h38"/><path d="M9 10l6 6M39 10l-6 6M9 38l6-6M39 38l-6-6"/></> : project.title === "Shopify" ? <><path d="M10 16h28l-3 25H13z"/><path d="M17 17v-5a7 7 0 0 1 14 0v5"/><path d="M20 27c2-3 8-3 9 0s-2 4-5 5-5 3-4 6"/></> : project.title === "Life Project" ? <><circle cx="24" cy="24" r="19"/><path d="M24 38V15m0 9-10-9m10 16 10-12M14 38h20"/></> : <><path d="M24 5 42 24 24 43 6 24Z"/><circle cx="24" cy="24" r="8"/><path d="M24 12v24M12 24h24"/></>}</svg></div>
                   <h3>{project.title}</h3>
                 </div>
-                <p>{project.text}</p>\n                <div className="actionPreview"><strong>Твои ближайшие действия</strong>{actionList(project).length ? <ol>{actionList(project).slice(0,3).map((task)=><li key={task}>{task}</li>)}</ol> : <p>{statuses[project.title] === "planned" ? "Проект отложен — сейчас действий не требуется." : "Подтверждённых блокирующих решений пока нет."}</p>}</div>
+                <p>{project.text}</p>
+                <div className="actionPreview">
+                  <strong>Твоё следующее решение</strong>
+                  <div className="mobileAction">{actionList(project)[0] || "Сейчас решений не требуется"}</div>
+                  <ol className="desktopActions">{actionList(project).slice(0,3).map(task => <li key={task}>{task}</li>)}</ol>
+                </div>
+                <button className="detailsButton" type="button" onClick={() => setSelectedProject(project)}>Задачи и решения →</button>
                 <details className="workDetails">
                   <summary>Команда и работа · задачи / препятствия</summary>
                   <dl>
