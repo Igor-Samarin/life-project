@@ -34,7 +34,7 @@ const products = [
 
 const stores = Array.from({length:8},(_,i)=>({
   id:String(i+1).padStart(2,"0"),
-  name:i===0?"Laser / Beauty Store":"Store "+String(i+1).padStart(2,"0"),
+  name:i===0?"LUMERA · Laser / Beauty":"Store "+String(i+1).padStart(2,"0"),
   status:i===0?"Текущий запуск":"Очередь"
 }));
 
@@ -133,6 +133,7 @@ export default function ShopifyProject(){
         <div className="lp-kpi"><span>Оценка товара</span><strong>0–35</strong></div>
       </div>
 
+      <p><Link className="sheetBtn" href="/projects/shopify/lumera">LUMERA · мои ближайшие шаги и задачи Артёма →</Link></p>
       <section className="team">
         <article className="role">
           <div className="lp-cardLabel">Owner · Игорь</div>
@@ -159,7 +160,7 @@ export default function ShopifyProject(){
       <section className="lp-panel">
         <h2 className="lp-sectionTitle">8 магазинов</h2>
         <p className="lp-subtitle">Сейчас запускаем №01 по лазерам / beauty. Остальные семь — очередь следующих запусков.</p>
-        <div className="stores">{stores.map(s=><div className="store" key={s.id}><small>Store {s.id}</small><b>{s.name}</b><small>{s.status}</small></div>)}</div>
+        <div className="stores">{stores.map(s=>s.id==="01"?<Link className="store" key={s.id} href="/projects/shopify/lumera"><small>Магазин {s.id}</small><b>{s.name}</b><small>Мои задачи и работа Артёма →</small></Link>:<div className="store" key={s.id}><small>Store {s.id}</small><b>{s.name}</b><small>{s.status}</small></div>)}</div>
       </section>
 
       <section className="lp-panel">
