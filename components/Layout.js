@@ -38,11 +38,16 @@ export default function Layout({ children, active }) {
         .lp-subtitle{max-width:760px;color:#98948b;font-size:15px;line-height:1.7;margin:20px 0 0}
         .lp-sectionTitle{font-family:Georgia,serif;font-size:28px;font-weight:400;margin:0 0 16px}
         .lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+        .lp-visual{height:145px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
+        .lp-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.025) 25px 26px)}
+        .lp-visual span{font-size:75px;filter:drop-shadow(0 15px 12px #0009);position:relative;transform:rotate(-5deg)}
         .lp-card{min-height:185px;padding:24px;border:1px solid rgba(217,187,91,.14);background:linear-gradient(145deg,rgba(28,29,32,.72),rgba(12,13,15,.78));border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden}
         .lp-card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(205,175,80,.07);border-radius:50%;right:-55px;top:-62px}
         .lp-cardLabel{font-size:10px;color:#c9ad54;text-transform:uppercase;letter-spacing:.18em}
         .lp-card h3{font-family:Georgia,serif;font-size:23px;font-weight:400;margin:22px 0 8px}
         .lp-card p{color:#8f8c85;line-height:1.55;font-size:13px;margin:0;max-width:330px}
+        .lp-card:hover{transform:translateY(-3px);border-color:#c8a850;box-shadow:0 15px 40px #0008}
+        .lp-card{transition:transform .2s,border-color .2s,box-shadow .2s}
         .lp-cardMeta{margin-top:auto;padding-top:20px;color:#bbb4a3;font-size:12px}
         .lp-panel{margin-top:34px;padding:24px;border:1px solid rgba(217,187,91,.13);border-radius:20px;background:rgba(15,16,18,.74)}
         .lp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
@@ -52,6 +57,7 @@ export default function Layout({ children, active }) {
         .lp-footer{max-width:1320px;margin:0 auto;padding:0 5vw 34px;color:#575750;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
         @media(max-width:900px){
           .lp-topbar{height:62px;padding:0 20px}
+          .lp-visual{height:125px}
           .lp-nav{padding:10px 16px;grid-template-columns:repeat(2,1fr)}
           .lp-navItem{min-height:48px;padding:0 12px;font-size:13px}
           .lp-main{padding:36px 18px 58px}
