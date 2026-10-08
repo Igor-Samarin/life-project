@@ -24,7 +24,7 @@ const artem = [
 
 const people=[
 {id:"artem",name:"Артём",initial:"А",role:"Технический партнёр · работает с AI",status:"Участие согласовано",projects:"Shopify / LUMERA · Відновимо",next:"LUMERA: показать готовность и провести тестовый заказ.",block:"Нет свежего отчёта; доступ к коду Відновимо ещё не подтверждён."},
-{id:"karina",name:"Карина",initial:"К",role:"Будущий участник · роль уточняется",status:"Подключение планируется",projects:"Проект пока не назначен",next:"Определить роль, задачи и границы участия.",block:"Не согласованы проект, результат и срок."}
+{id:"karina",name:"Карина",initial:"К",role:"Самостоятельный проект · Прага",status:"Концепция подготовлена · участие не подтверждено",projects:"Karina · Prague Private Tours",next:"Карине: решить, запускать ли проект; подтвердить автомобиль и формат услуг.",block:"Нет подтверждения Карины и доступа к редактору исходного сайта."}
 ];
 function Steps({items}){return <ol>{items.map(([title,result,time])=><li key={title}><b>{title}</b><p>{result}</p><small>{time} · выполнение не подтверждено</small></li>)}</ol>}
 export default function Team(){
