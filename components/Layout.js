@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 export const mainSections = [
-  { href: "/family", label: "Семья", icon: "◈" },
-  { href: "/finances", label: "Финансы", icon: "◇" },
-  { href: "/garage", label: "Гараж семьи", icon: "◆" },
-  { href: "/projects", label: "Проекты", icon: "◎" },
+  { href: "/family", label: "Семья", icon: "♧" },
+  { href: "/finances", label: "Финансы", icon: "◈" },
+  { href: "/garage", label: "Гараж семьи", icon: "▣" },
+  { href: "/projects", label: "Проекты", icon: "▤" },
 ];
 
 export default function Layout({ children, active }) {
@@ -30,23 +30,24 @@ export default function Layout({ children, active }) {
         .lp-nav{max-width:1320px;margin:0 auto;padding:12px 5vw;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
         .lp-navItem{min-height:52px;display:flex;align-items:center;gap:10px;padding:0 15px;border:1px solid rgba(217,187,91,.12);border-radius:14px;background:rgba(20,21,24,.56);color:#9e9a91;transition:.2s ease}
         .lp-navItem:hover{border-color:rgba(217,187,91,.34);color:#f1ead8}
-        .lp-navItem.active{color:#f4e8bd;border-color:rgba(217,187,91,.40);background:linear-gradient(145deg,rgba(49,43,28,.78),rgba(17,18,21,.88))}
+        .lp-navItem.active{box-shadow:inset 0 0 25px rgba(212,175,55,.14),0 0 18px rgba(212,175,55,.08);color:#f4e8bd;border-color:rgba(217,187,91,.40);background:linear-gradient(145deg,rgba(49,43,28,.78),rgba(17,18,21,.88))}
         .lp-navIcon{color:#d2b65c}
-        .lp-main{max-width:1320px;margin:0 auto;padding:48px 5vw 80px}
+        .lp-main{max-width:1450px;margin:0 auto;padding:48px 5vw 80px}
         .lp-eyebrow{color:#c9ad54;text-transform:uppercase;letter-spacing:.22em;font-size:10px;margin-bottom:14px}
         .lp-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,5.8vw,78px);font-weight:400;line-height:.95;margin:0;letter-spacing:-.045em}
         .lp-subtitle{max-width:760px;color:#98948b;font-size:15px;line-height:1.7;margin:20px 0 0}
         .lp-sectionTitle{font-family:Georgia,serif;font-size:28px;font-weight:400;margin:0 0 16px}
-        .lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+        .lp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
         .cinemaArt{overflow:hidden;position:relative}
         .cinemaArt svg{display:block;width:100%;height:100%}
-        .lp-visual{height:145px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
+        .artShine{position:absolute;inset:0;background:linear-gradient(130deg,rgba(255,221,138,.12),transparent 42%,rgba(0,0,0,.35));pointer-events:none}
+        .lp-visual{height:170px;margin:-24px -24px 18px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 55% 35%,rgba(246,191,87,.38),transparent 44%),linear-gradient(135deg,#35301f,#101418 75%);border-bottom:1px solid rgba(226,183,80,.25)}
         .lp-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.025) 25px 26px)}
         .lp-visual span{font-size:75px;filter:drop-shadow(0 15px 12px #0009);position:relative;transform:rotate(-5deg)}
-        .lp-card{min-height:185px;padding:24px;border:1px solid rgba(217,187,91,.14);background:linear-gradient(145deg,rgba(28,29,32,.72),rgba(12,13,15,.78));border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .lp-card{min-height:300px;padding:24px;border:1px solid rgba(217,187,91,.14);background:linear-gradient(145deg,rgba(28,29,32,.72),rgba(12,13,15,.78));border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden}
         .lp-card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(205,175,80,.07);border-radius:50%;right:-55px;top:-62px}
         .lp-cardLabel{font-size:10px;color:#c9ad54;text-transform:uppercase;letter-spacing:.18em}
-        .lp-card h3{font-family:Georgia,serif;font-size:23px;font-weight:400;margin:22px 0 8px}
+        .lp-card h3{font-family:Georgia,serif;font-size:25px;font-weight:400;margin:12px 0 8px}
         .lp-card p{color:#8f8c85;line-height:1.55;font-size:13px;margin:0;max-width:330px}
         .lp-card:hover{transform:translateY(-3px);border-color:#c8a850;box-shadow:0 15px 40px #0008}
         .lp-card{transition:transform .2s,border-color .2s,box-shadow .2s}
@@ -63,10 +64,11 @@ export default function Layout({ children, active }) {
           .lp-nav{padding:10px 16px;grid-template-columns:repeat(2,1fr)}
           .lp-navItem{min-height:48px;padding:0 12px;font-size:13px}
           .lp-main{padding:36px 18px 58px}
-          .lp-grid{grid-template-columns:1fr}
+          .lp-grid{grid-template-columns:1fr 1fr}
           .lp-kpis{grid-template-columns:repeat(2,1fr)}
           .lp-status span:last-child{display:none}
         }
+        @media(max-width:600px){.lp-grid{grid-template-columns:1fr}.lp-card{min-height:270px}.lp-visual{height:150px}}
         @media(max-width:420px){
           .lp-nav{grid-template-columns:1fr 1fr;gap:8px}
           .lp-navItem{font-size:12px}
