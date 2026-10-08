@@ -1,3 +1,4 @@
+import {useState} from "react";
 import Link from "next/link";
 
 export const mainSections = [
@@ -7,7 +8,8 @@ export const mainSections = [
   { href: "/projects", label: "Проекты", icon: "▤" },
 ];
 
-export default function Layout({ children, active }) {
+export default function Layout({ children, active, home = false }) {
+  const [menuOpen,setMenuOpen]=useState(false);
   return (
     <>
       <style jsx global>{`
@@ -26,12 +28,21 @@ export default function Layout({ children, active }) {
         .lp-brand small{display:block;font-size:9px;color:#a9a59a;letter-spacing:.24em;margin-top:2px}
         .lp-status{font-size:12px;color:#b9b4a8;display:flex;gap:8px;align-items:center}
         .lp-dot{width:7px;height:7px;background:#c8ad55;border-radius:50%;box-shadow:0 0 12px #c8ad55}
+        .lp-menuButton{cursor:pointer;border:1px solid #d0ae5a88;border-radius:12px;padding:11px 17px;color:#f1d88d;background:#292318;font-weight:600}
+        .lp-menuBackdrop{position:fixed;inset:0;background:#0009;z-index:29}
+        .lp-menuPanel{position:fixed;right:0;top:0;bottom:0;width:min(360px,90vw);padding:28px;background:#111317;border-left:1px solid #c9a85a77;z-index:30;box-shadow:-20px 0 60px #000b;overflow:auto}
+        .lp-menuHeader{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;color:#e8cb80;font:26px Georgia,serif}
+        .lp-menuClose{cursor:pointer;color:#e9d6a5;border:1px solid #b69a5d66;border-radius:9px;background:#262117;padding:8px 13px}
+        .lp-menuList{display:flex;flex-direction:column;gap:12px}
+        .lp-menuList a{display:flex;align-items:center;gap:14px;padding:17px;border:1px solid #b99b5760;border-radius:14px;background:linear-gradient(110deg,#31291c,#17191c);font-weight:600}
+        .lp-menuList a:hover{border-color:#e8c778}
         .lp-navWrap{border-bottom:1px solid rgba(212,175,55,.10);background:rgba(10,11,13,.68)}
         .lp-nav{max-width:1320px;margin:0 auto;padding:12px 5vw;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
         .lp-navItem{min-height:66px;display:flex;align-items:center;gap:13px;padding:0 19px;border:1px solid rgba(217,187,91,.24);border-radius:17px;background:linear-gradient(130deg,rgba(49,39,22,.70),rgba(15,17,20,.96));color:#e7ddc4;box-shadow:inset 0 1px 0 rgba(255,226,143,.09),0 8px 22px #0005;transition:.2s ease;font-weight:600}
         .lp-navItem:hover{transform:translateY(-2px);border-color:rgba(241,208,111,.68);color:#fff4cf;box-shadow:0 12px 30px #0008}
         .lp-navItem.active{box-shadow:inset 0 0 25px rgba(212,175,55,.14),0 0 18px rgba(212,175,55,.08);color:#f4e8bd;border-color:rgba(217,187,91,.40);background:linear-gradient(145deg,rgba(49,43,28,.78),rgba(17,18,21,.88))}
         .lp-navIcon{color:#f3d57c;font-size:24px;width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(232,192,93,.25);border-radius:11px;background:linear-gradient(135deg,#3b311d,#191713)}
+        .lp-main.homeMain{max-width:none;padding:0 0 70px}
         .lp-main{max-width:1450px;margin:0 auto;padding:48px 5vw 80px}
         .lp-eyebrow{color:#c9ad54;text-transform:uppercase;letter-spacing:.22em;font-size:10px;margin-bottom:14px}
         .lp-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,5.8vw,78px);font-weight:400;line-height:.95;margin:0;letter-spacing:-.045em}
@@ -63,7 +74,7 @@ export default function Layout({ children, active }) {
           :global(.lp-visual){height:125px}
           .lp-nav{padding:10px 16px;grid-template-columns:repeat(2,1fr)}
           .lp-navItem{min-height:56px;padding:0 12px;font-size:13px}
-          .lp-main{padding:36px 18px 58px}
+          .lp-main{padding:36px 18px 58px}.lp-main.homeMain{padding:0 0 48px}
           .lp-grid{grid-template-columns:1fr 1fr}
           .lp-kpis{grid-template-columns:repeat(2,1fr)}
           .lp-status span:last-child{display:none}
@@ -81,19 +92,10 @@ export default function Layout({ children, active }) {
             <div className="lp-mark">Ж</div>
             <div>ЖИЗНЬ<small>LIFE PROJECT</small></div>
           </Link>
-          <div className="lp-status"><i className="lp-dot"></i><span>Система активна</span></div>
+          <button className="lp-menuButton" type="button" aria-expanded={menuOpen} onClick={()=>setMenuOpen(true)}>☰ Меню</button>
         </header>
-        <div className="lp-navWrap">
-          <nav className="lp-nav" aria-label="Главные разделы">
-            {mainSections.map((item) => (
-              <Link key={item.href} href={item.href} className={`lp-navItem ${active === item.href ? "active" : ""}`}>
-                <span className="lp-navIcon">{item.icon}</span>
-                <span>{item.label}</span>
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <main className="lp-main">{children}</main>
+        {menuOpen && <><div className="lp-menuBackdrop" onClick={()=>setMenuOpen(false)}></div><aside className="lp-menuPanel" aria-label="Меню разделов"><div className="lp-menuHeader">ЖИЗНЬ <button className="lp-menuClose" type="button" onClick={()=>setMenuOpen(false)}>✕ Закрыть</button></div><nav className="lp-menuList"><Link href="/" onClick={()=>setMenuOpen(false)}>⌂ Главная</Link>{mainSections.map(item=><Link key={item.href} href={item.href} onClick={()=>setMenuOpen(false)}><span className="lp-navIcon">{item.icon}</span>{item.label} →</Link>)}<Link href="/projects/shopify" onClick={()=>setMenuOpen(false)}>◇ Shopify →</Link></nav></aside></>}
+        <main className={"lp-main"+(home?" homeMain":"")}>{children}</main>
         <footer className="lp-footer">Life Project · стратегия реальной жизни</footer>
       </div>
     </>
