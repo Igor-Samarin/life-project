@@ -1,18 +1,19 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 // Design preview ONLY. Do not accept passphrases or store confidential data here.
 export default function PrivateVault() {
   const [notice, setNotice] = useState(false);
   const [turning, setTurning] = useState(false);
   const [inside, setInside] = useState(false);
+  useEffect(() => { if (!turning) return; const t=setTimeout(()=>setInside(true),2500); return ()=>clearTimeout(t); },[turning]);
   return <Layout>
     <section className="vault">
       <div className="eyebrow">LIFE PROJECT / PRIVATE AREA</div>
       <h1>Личный сейф</h1>
       <p className="lead">PRIVATE VAULT · закрытый архив</p>
-      <div className={`safe ${turning ? "turning" : ""}`} role="img" aria-label="Закрытая металлическая дверь сейфа с золотым нордическим символом">
+      {!inside && <div className={`safe ${turning ? "turning" : ""}`} role="img" aria-label="Закрытая металлическая дверь сейфа с золотым нордическим символом">
         <div className="safeFrame">
           <div className="safeDoor">
             <div className="rivets" aria-hidden="true">◆ <span>◆</span></div>
@@ -21,9 +22,10 @@ export default function PrivateVault() {
           </div>
         </div>
       </div>
-      <div className="locked"><span className="dot"/> СЕЙФ ЗАКРЫТ</div>
-      <button type="button" className="open" onClick={()=>{setTurning(true);setNotice(true)}}>Повернуть замок →</button>
-      {notice && <div className="notice" role="status">Это пока демонстрационный экран. Вход по кодовой фразе и защищённое хранилище ещё разрабатываются. Никакие пароли и личные данные сюда не вводи. <button onClick={()=>{setNotice(false);setTurning(false)}} type="button">Понятно</button></div>}
+      {inside && <section className="innerPreview"><div className="innerRune">ᛟ</div><h2>Внутренний архив</h2><p>Демонстрация интерфейса. Защищённый доступ ещё не подключён.</p><div className="innerTile">Особые дела · Недоступно</div><div className="innerTile">Документы · Недоступно</div><div className="innerTile">Личные записи · Недоступно</div><button type="button" className="open" onClick={()=>{setInside(false);setTurning(false);setNotice(false)}}>Закрыть сейф</button></section>}
+      {!inside && <div className="locked"><span className="dot"/> СЕЙФ ЗАКРЫТ</div>}
+      {!inside && <button type="button" className="open" disabled={turning} onClick={()=>setTurning(true)}>{turning ? "Дверь открывается…" : "Открыть сейф →"}</button>}
+      {notice && !inside && <div className="notice" role="status">Это пока демонстрационный экран. Вход по кодовой фразе и защищённое хранилище ещё разрабатываются. Никакие пароли и личные данные сюда не вводи. <button onClick={()=>{setNotice(false);setTurning(false)}} type="button">Понятно</button></div>}
       <p className="warning">Предварительная версия. Личные дела и документы пока не хранятся.</p>
       <Link href="/" className="back">← На главную</Link>
     </section>
@@ -49,6 +51,13 @@ export default function PrivateVault() {
       .open{padding:14px 26px;border:1px solid #c5a45e;background:linear-gradient(110deg,#46361d,#241e16);color:#ffe2a0;border-radius:12px;font-weight:600;cursor:pointer}
       .notice{max-width:480px;margin:20px auto;padding:18px;color:#eee0c2;background:#25221b;border:1px solid #b79a5e;border-radius:12px;line-height:1.65;font-size:13px}
       .notice button{display:block;margin:14px auto 0;padding:8px 17px;background:#44351f;color:#ffe1a1;border:1px solid #b79a5e;border-radius:8px;cursor:pointer}
+      .innerPreview{max-width:480px;margin:30px auto;padding:28px 18px;background:radial-gradient(circle at top,#46361d,#101216 75%);border:1px solid #b99b5b;border-radius:20px;color:#ead49c}
+      .innerRune{font-size:60px;color:#e9c779}
+      .innerPreview h2{font:normal 29px Georgia,serif}
+      .innerPreview p{font-size:13px;color:#c9c0ad;line-height:1.5}
+      .innerTile{margin:10px 0;padding:14px;border:1px solid #867249;border-radius:10px;background:#201e1b;text-align:left}
+      .innerPreview .open{margin-top:14px}
+      .open:disabled{opacity:.6}
       .warning{color:#9b978e;font-size:12px;line-height:1.5;margin:24px auto}
       .back{display:inline-block;color:#d8bc79;font-size:13px}
       @media(max-width:500px){.vault{padding:0 4px}.safe{width:min(100%,290px);padding:11px}.safeFrame{padding:9px}.safePlate{letter-spacing:1px;font-size:8px}}
