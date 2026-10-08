@@ -40,6 +40,7 @@ const images={
   "До конца периода": "photo-1460925895917-afdab827c52f",
   "Свободные деньги": "photo-1544377193-33dcf4d68fb5",
   "Hyundai ix35": "photo-1494976388531-d1058494cdd8",
+  "Lamborghini Urus": "photo-1511919884226-fd3cad34687c",
   "Обслуживание": "photo-1487754180451-c456f719a1fc",
   "Стоимость владения": "photo-1556742049-0cfed4f6a45d",
   "Следующая машина": "photo-1503376780353-7e6692767b70"
@@ -48,7 +49,7 @@ const fallback="photo-1518770660439-4636190af475";
 export function artForTitle(title=""){return title;}
 export default function ProjectArt({kind="Проекты",className=""}){
  const photo=images[kind]||fallback;
- const customImage=kind==="Hyundai ix35"?"https://www.ssmotors.com.tr/B2ELResim/AracResim2El/7823/a0878cdd405940d68ee9b34a47a34ebe0311201510543299338_0.jpg":null;
+ const customImage=null;
  return <div className={"cinemaArt "+className} aria-label={"Иллюстрация: "+kind} role="img" style={{position:"relative",overflow:"hidden",minHeight:95,backgroundColor:"#171612",backgroundImage:'linear-gradient(0deg,rgba(4,6,8,.55),transparent 70%),url("'+(customImage||"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=960&q=82")+'")',backgroundSize:"cover",backgroundPosition:"center"}}>
  <div style={{position:"absolute",inset:0,background:"linear-gradient(125deg,rgba(246,193,91,.16),transparent 46%,rgba(0,0,0,.2))",pointerEvents:"none"}}/>
  </div>;
