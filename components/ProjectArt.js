@@ -48,7 +48,7 @@ const fallback="photo-1518770660439-4636190af475";
 export function artForTitle(title=""){return title;}
 export default function ProjectArt({kind="Проекты",className=""}){
  const photo=images[kind]||fallback;
- const customImage=kind==="Hyundai ix35"?"https://www.autoesa.cz/files/cars/815289477/800_496_e/815289477-1.jpg":null;
+ const customImage=kind==="Hyundai ix35"?"https://www.ssmotors.com.tr/B2ELResim/AracResim2El/7823/a0878cdd405940d68ee9b34a47a34ebe0311201510543299338_0.jpg":null;
  return <div className={"cinemaArt "+className} aria-label={"Иллюстрация: "+kind} role="img" style={{position:"relative",overflow:"hidden",minHeight:95,backgroundColor:"#171612",backgroundImage:'linear-gradient(0deg,rgba(4,6,8,.55),transparent 70%),url("'+(customImage||"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=960&q=82")+'")',backgroundSize:"cover",backgroundPosition:"center"}}>
  <div style={{position:"absolute",inset:0,background:"linear-gradient(125deg,rgba(246,193,91,.16),transparent 46%,rgba(0,0,0,.2))",pointerEvents:"none"}}/>
  </div>;
