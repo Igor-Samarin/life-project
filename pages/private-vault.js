@@ -6,6 +6,7 @@ import {useState} from "react";
 export default function PrivateVault() {
   const [notice, setNotice] = useState(false);
   const [turning, setTurning] = useState(false);
+  const [inside, setInside] = useState(false);
   return <Layout>
     <section className="vault">
       <div className="eyebrow">LIFE PROJECT / PRIVATE AREA</div>
