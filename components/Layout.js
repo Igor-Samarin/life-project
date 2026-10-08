@@ -2,10 +2,10 @@ import {useState} from "react";
 import Link from "next/link";
 
 export const mainSections = [
+  { href: "/projects", label: "Проекты", icon: "▤" },
   { href: "/family", label: "Семья", icon: "♧" },
   { href: "/finances", label: "Финансы", icon: "◈" },
   { href: "/garage", label: "Гараж семьи", icon: "▣" },
-  { href: "/projects", label: "Проекты", icon: "▤" },
 ];
 
 export default function Layout({ children, active, home = false }) {
