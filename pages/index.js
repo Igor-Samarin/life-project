@@ -17,7 +17,7 @@ export default function Home() {
       <section className="welcomeHero">
         <div className="welcomeVisual"><ProjectArt kind="Lamborghini Urus" className="welcomeCar"/></div>
         <div className="welcomeContent">
-          <div className="lp-eyebrow">LIFE PROJECT · ЛИЧНАЯ ЭКОСИСТЕМА</div>
+          <div className="lp-eyebrow">GOOD PLANET · ЛИЧНАЯ ЭКОСИСТЕМА</div>
           <h1>Добро пожаловать<br/><em>в твою империю.</em></h1>
           <p>Все важные направления жизни в одном месте. Управляй проектами, семьёй, финансами и будущими целями — в своём темпе.</p>
           <div className="heroButtons"><Link href="/projects">Перейти к проектам →</Link><Link href="/goals">Мои цели ↗</Link></div>
@@ -27,7 +27,7 @@ export default function Home() {
         <h2 className="lp-sectionTitle">Центр управления</h2>
         <p className="lp-subtitle">Быстрые переходы к действиям. Выбери направление — откроется соответствующий рабочий раздел.</p>
         <div className="lp-controlLinks">
-          <Link href="/projects" className="lp-controlLink"><ProjectArt kind="Life Project" className="controlArt"/><strong>Проекты</strong><span>Все направления и решения →</span></Link>
+          <Link href="/projects" className="lp-controlLink"><ProjectArt kind="Good Planet" className="controlArt"/><strong>Проекты</strong><span>Все направления и решения →</span></Link>
           <Link href="/family" className="lp-controlLink"><ProjectArt kind="Семья" className="controlArt"/><strong>Семья</strong><span>Семейные цели и события →</span></Link>
           <Link href="/finances" className="lp-controlLink"><ProjectArt kind="Финансы" className="controlArt"/><strong>Финансы</strong><span>Доходы, расходы и резерв →</span></Link>
           <Link href="/garage" className="lp-controlLink"><ProjectArt kind="Гараж семьи" className="controlArt"/><strong>Гараж семьи</strong><span>Автомобили и планы →</span></Link>
@@ -38,7 +38,7 @@ export default function Home() {
         <p className="lp-subtitle">Семь направлений для быстрого перехода. Порядок — текущий ориентир, а не автоматически рассчитанный рейтинг.</p>
         <div className="priorityGrid">
           <Link href="/projects/shopify"><ProjectArt kind="Shopify" className="priorityArt"/><div><small>01 · Главный бизнес-фокус</small><strong>Shopify / LUMERA</strong></div></Link>
-          <Link href="/projects"><ProjectArt kind="Life Project" className="priorityArt"/><div><small>02 · Система управления</small><strong>LIFE PROJECT</strong></div></Link>
+          <Link href="/projects"><ProjectArt kind="Good Planet" className="priorityArt"/><div><small>02 · Система управления</small><strong>GOOD PLANET</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="Taxi / Private Driver / Prague Tours" className="priorityArt"/><div><small>03 · Текущий доход</small><strong>Taxi / Prague Tours</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="AI Product Monetization" className="priorityArt"/><div><small>04 · Личный AI</small><strong>Personal AI Companion</strong></div></Link>
           <Link href="/projects"><ProjectArt kind="International Driver Platform · Europe & USA" className="priorityArt"/><div><small>05 · Подготовка</small><strong>Driver Platform</strong></div></Link>
@@ -53,7 +53,7 @@ export default function Home() {
           <Link href="/projects/shopify/lumera" className="quickTile"><ProjectArt kind="Shopify" className="quickArt"/><div><strong>Магазин LUMERA</strong><span>Товары, витрина и запуск →</span></div></Link>
           <Link href="/projects/shopify" className="quickTile"><ProjectArt kind="Проекты" className="quickArt"/><div><strong>Shopify · магазины</strong><span>Развитие e-commerce →</span></div></Link>
           <Link href="/projects/team" className="quickTile"><ProjectArt kind="Family Business Network" className="quickArt"/><div><strong>Команда проектов</strong><span>Ответственные и задачи →</span></div></Link>
-          <Link href="/projects" className="quickTile"><ProjectArt kind="Life Project" className="quickArt"/><div><strong>Очередь проектов</strong><span>Активные и будущие идеи →</span></div></Link>
+          <Link href="/projects" className="quickTile"><ProjectArt kind="Good Planet" className="quickArt"/><div><strong>Очередь проектов</strong><span>Активные и будущие идеи →</span></div></Link>
           <Link href="/family" className="quickTile"><ProjectArt kind="Семья" className="quickArt"/><div><strong>Семья</strong><span>Планы и события →</span></div></Link>
           <Link href="/finances" className="quickTile"><ProjectArt kind="Семейный доход" className="quickArt"/><div><strong>Семейный бюджет</strong><span>Доходы и расходы →</span></div></Link>
           <Link href="/garage" className="quickTile"><ProjectArt kind="Hyundai ix35" className="quickArt"/><div><strong>Текущий автомобиль</strong><span>Hyundai ix35 и сервис →</span></div></Link>
