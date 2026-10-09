@@ -90,13 +90,13 @@ export default function Layout({ children, active, home = false }) {
         <header className="lp-topbar">
           <Link href="/" className="lp-brand">
             <div className="lp-mark">Ж</div>
-            <div>ЖИЗНЬ<small>LIFE PROJECT</small></div>
+            <div>ЖИЗНЬ<small>GOOD PLANET</small></div>
           </Link>
           <button className="lp-menuButton" type="button" aria-expanded={menuOpen} onClick={()=>setMenuOpen(true)}>☰ Меню</button>
         </header>
         {menuOpen && <><div className="lp-menuBackdrop" onClick={()=>setMenuOpen(false)}></div><aside className="lp-menuPanel" aria-label="Меню разделов"><div className="lp-menuHeader">ЖИЗНЬ <button className="lp-menuClose" type="button" onClick={()=>setMenuOpen(false)}>✕ Закрыть</button></div><nav className="lp-menuList"><Link href="/" onClick={()=>setMenuOpen(false)}>⌂ Главная</Link>{mainSections.map(item=><Link key={item.href} href={item.href} onClick={()=>setMenuOpen(false)}><span className="lp-navIcon">{item.icon}</span>{item.label} →</Link>)}<Link href="/projects/shopify" onClick={()=>setMenuOpen(false)}>◇ Shopify →</Link></nav></aside></>}
         <main className={"lp-main"+(home?" homeMain":"")}>{children}</main>
-        <footer className="lp-footer">Life Project · стратегия реальной жизни</footer>
+        <footer className="lp-footer">Good Planet · стратегия реальной жизни</footer>
       </div>
     </>
   );
